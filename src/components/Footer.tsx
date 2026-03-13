@@ -2,33 +2,41 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-snow border-t border-cloud">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                <span className="font-display font-bold text-white text-xs">GF</span>
-              </div>
-              <span className="font-display font-bold text-ink text-sm">Global Fund</span>
-            </div>
-            <p className="text-stone text-sm leading-relaxed">
-              Premier commercial real estate brokerage specializing in acquisitions,
-              asset management, sales &amp; leasing.
+    <footer className="bg-navy text-white/80">
+      {/* Top accent line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-brass to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-12">
+        {/* Main footer grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
+          {/* Brand column */}
+          <div className="md:col-span-4">
+            <span className="font-serif text-2xl font-bold text-white tracking-tight">
+              Global<span className="text-brass-light">Fund</span>
+            </span>
+            <p className="mt-4 text-white/50 text-sm leading-relaxed max-w-xs">
+              Premier commercial real estate brokerage. Where vision meets value
+              across America&apos;s most dynamic markets.
             </p>
+            <div className="editorial-line mt-6 opacity-50" />
           </div>
 
-          {/* Nav */}
-          <div>
-            <h4 className="font-display font-semibold text-ink text-sm mb-4">Navigation</h4>
-            <div className="space-y-2">
+          {/* Quick links */}
+          <div className="md:col-span-2">
+            <h4 className="font-sans text-[11px] tracking-mega uppercase text-brass-muted mb-5">
+              Navigate
+            </h4>
+            <div className="space-y-3">
               {[
                 { href: "/", label: "Home" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((l) => (
-                <Link key={l.href} href={l.href} className="block text-stone text-sm hover:text-accent transition-colors">
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="block text-white/50 text-sm hover:text-brass-light transition-colors duration-300"
+                >
                   {l.label}
                 </Link>
               ))}
@@ -36,9 +44,11 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
-            <h4 className="font-display font-semibold text-ink text-sm mb-4">Services</h4>
-            <div className="space-y-2 text-stone text-sm">
+          <div className="md:col-span-3">
+            <h4 className="font-sans text-[11px] tracking-mega uppercase text-brass-muted mb-5">
+              Services
+            </h4>
+            <div className="space-y-3 text-white/50 text-sm">
               <p>Acquisitions</p>
               <p>Sales &amp; Leasing</p>
               <p>Asset Management</p>
@@ -46,35 +56,42 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-display font-semibold text-ink text-sm mb-4">Contact</h4>
-            <div className="space-y-2 text-stone text-sm">
-              <p>
-                <span className="text-ink-muted">Phoenix</span>{" "}
-                <a href="tel:+14804627900" className="hover:text-accent transition-colors">(480) 462-7900</a>
-              </p>
-              <p>
-                <span className="text-ink-muted">Fort Lauderdale</span>{" "}
-                <a href="tel:+19547278066" className="hover:text-accent transition-colors">(954) 727-8066</a>
-              </p>
-              <p>
-                <a href="mailto:info@globalfundreg.com" className="hover:text-accent transition-colors">
+          <div className="md:col-span-3">
+            <h4 className="font-sans text-[11px] tracking-mega uppercase text-brass-muted mb-5">
+              Contact
+            </h4>
+            <div className="space-y-3 text-sm">
+              <div>
+                <span className="text-white/30 text-xs uppercase tracking-wide">Phoenix</span>
+                <a href="tel:+14804627900" className="block text-white/50 hover:text-brass-light transition-colors">
+                  (480) 462-7900
+                </a>
+              </div>
+              <div>
+                <span className="text-white/30 text-xs uppercase tracking-wide">Fort Lauderdale</span>
+                <a href="tel:+19547278066" className="block text-white/50 hover:text-brass-light transition-colors">
+                  (954) 727-8066
+                </a>
+              </div>
+              <div className="pt-1">
+                <a href="mailto:info@globalfundreg.com" className="text-brass-muted hover:text-brass-light transition-colors">
                   info@globalfundreg.com
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-cloud flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-stone text-xs">
-            &copy; {new Date().getFullYear()} Global Fund Real Estate Group. All rights reserved.
+        {/* Bottom bar */}
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/30 text-xs tracking-wide">
+            &copy; {new Date().getFullYear()} Global Fund Real Estate Group
           </p>
-          <div className="flex items-center gap-4 text-stone text-xs">
+          <div className="flex items-center gap-6 text-white/30 text-xs tracking-wide">
             <span>Phoenix, AZ</span>
-            <span className="w-1 h-1 rounded-full bg-silver" />
+            <span className="w-[3px] h-[3px] rounded-full bg-brass/40" />
             <span>Fort Lauderdale, FL</span>
-            <span className="w-1 h-1 rounded-full bg-silver" />
+            <span className="w-[3px] h-[3px] rounded-full bg-brass/40" />
             <span>Chicago MSA, IL</span>
           </div>
         </div>

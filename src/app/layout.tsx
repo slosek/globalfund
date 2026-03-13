@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Global Fund Real Estate Group | Acquisitions, Asset Management, Sales & Leasing",
+  title: "Global Fund Real Estate Group | Where Vision Meets Value",
   description:
-    "Premier commercial real estate brokerage specializing in acquisitions, asset management, sales and leasing. Offices in Phoenix AZ, Fort Lauderdale FL, and Chicago MSA IL.",
+    "Premier commercial real estate brokerage specializing in acquisitions, asset management, sales and leasing across Phoenix, Fort Lauderdale, and Chicago.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white text-ink antialiased">
+      <body className="bg-parchment text-ink antialiased">
+        <div className="grain-overlay" />
         <Navigation />
         <main>{children}</main>
         <Footer />

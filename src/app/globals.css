@@ -2,13 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Fonts ─── */
 @font-face {
-  font-family: "Outfit";
+  font-family: "Playfair Display";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 900;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/outfit/v11/QGYyz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2")
-    format("woff2");
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKd3vUDQZNLo_U2r.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/playfairdisplay/v37/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_qiTbtbK-F2rA0s.woff2") format("woff2");
 }
 
 @font-face {
@@ -16,44 +24,61 @@
   font-style: normal;
   font-weight: 100 1000;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhS23JYA.woff2")
-    format("woff2");
+  src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhS23JYA.woff2") format("woff2");
 }
 
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: #faf8f5;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: #1a3d5c;
+  background-color: #b08d57;
   color: white;
 }
 
+/* ─── Utility Classes ─── */
 @layer utilities {
-  .accent-text {
-    background: linear-gradient(135deg, #1a3d5c 0%, #2a6496 100%);
+  .text-gradient-brass {
+    background: linear-gradient(135deg, #c9a84c 0%, #b08d57 50%, #8a6d3b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .warm-text {
-    background: linear-gradient(135deg, #c9a84c 0%, #e8d48b 50%, #c9a84c 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .border-gradient-brass {
+    border-image: linear-gradient(135deg, #c9a84c, #b08d57, #8a6d3b) 1;
   }
 }
 
-/* Staggered entrance animations */
-@keyframes fadeInUp {
+/* ─── Decorative Elements ─── */
+.editorial-line {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #b08d57, #d4c4a0);
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Staggered Entrance Animations ─── */
+@keyframes revealUp {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -61,12 +86,32 @@ body {
   }
 }
 
+@keyframes revealFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .stagger-1, .stagger-2, .stagger-3, .stagger-4, .stagger-5 {
   opacity: 0;
-  animation: fadeInUp 0.7s ease-out forwards;
+  animation: revealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.35s; }
-.stagger-4 { animation-delay: 0.5s; }
-.stagger-5 { animation-delay: 0.65s; }
+.stagger-1 { animation-delay: 0.15s; }
+.stagger-2 { animation-delay: 0.3s; }
+.stagger-3 { animation-delay: 0.45s; }
+.stagger-4 { animation-delay: 0.6s; }
+.stagger-5 { animation-delay: 0.75s; }
+
+/* ─── Hover Effects ─── */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #faf8f5; }
+::-webkit-scrollbar-thumb { background: #d4c4a0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #b08d57; }
