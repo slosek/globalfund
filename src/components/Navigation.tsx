@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navigation() {
@@ -25,77 +26,57 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-parchment/95 backdrop-blur-md shadow-[0_1px_0_rgba(176,141,87,0.15)]"
+          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.05)] border-b border-gray-100"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Logo */}
-          <Link href="/" className="group flex items-center gap-3">
-            <span className="font-serif text-2xl font-bold text-navy tracking-tight">
-              Global<span className="text-brass">Fund</span>
-            </span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="flex items-center justify-between h-18 lg:h-20">
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.png" alt="Global Fund Real Estate" width={200} height={48} className="h-10 lg:h-11 w-auto" priority />
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative font-sans text-[13px] tracking-mega uppercase transition-colors duration-300 ${
-                  pathname === link.href
-                    ? "text-brass"
-                    : "text-ink-muted hover:text-ink"
+                className={`font-body text-sm font-medium transition-colors duration-200 ${
+                  pathname === link.href ? "text-electric" : "text-ink-muted hover:text-ink"
                 }`}
               >
                 {link.label}
-                {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 w-full h-px bg-brass" />
-                )}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="ml-2 px-7 py-3 bg-navy text-white font-sans text-[13px] tracking-mega uppercase hover:bg-navy-light transition-all duration-300"
+              className="px-5 py-2.5 bg-ink text-white text-sm font-medium rounded-full hover:bg-ink-light transition-colors duration-200"
             >
               Get in Touch
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px]"
+            className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px]"
             aria-label="Menu"
           >
-            <span className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${open ? "rotate-45 translate-y-[3.5px]" : ""}`} />
-            <span className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${open ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
+            <span className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${open ? "rotate-45 translate-y-[3.25px]" : ""}`} />
+            <span className={`w-5 h-[1.5px] bg-ink transition-all duration-300 ${open ? "-rotate-45 -translate-y-[3.25px]" : ""}`} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-80" : "max-h-0"}`}>
-        <div className="bg-parchment border-t border-fog px-6 py-8 space-y-5">
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-72" : "max-h-0"}`}>
+        <div className="bg-white border-t border-gray-100 px-6 py-5 space-y-4">
           {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`block font-sans text-sm tracking-mega uppercase ${
-                pathname === link.href ? "text-brass" : "text-ink-muted"
-              }`}
-            >
+            <Link key={link.href} href={link.href} className={`block text-sm font-medium ${pathname === link.href ? "text-electric" : "text-ink-muted"}`}>
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
-            className="block mt-4 px-6 py-3 bg-navy text-white font-sans text-[13px] tracking-mega uppercase text-center"
-          >
+          <Link href="/contact" className="block mt-3 px-5 py-2.5 bg-ink text-white text-sm font-medium rounded-full text-center">
             Get in Touch
           </Link>
         </div>

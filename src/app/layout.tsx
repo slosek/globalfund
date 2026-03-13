@@ -16,8 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-parchment text-ink antialiased">
-        <div className="grain-overlay" />
+      <body className="bg-white text-ink antialiased">
         <Navigation />
         <main>{children}</main>
         <Footer />
