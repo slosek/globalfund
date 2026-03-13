@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tailwindcss:*)",
+      "Bash(npx tailwindcss@3 init -p 2>&1 && mkdir -p src/app/about src/app/contact src/components)",
+      "Bash(npm ls:*)",
+      "Bash(npm uninstall:*)",
+      "Read(//tmp/**)",
+      "Bash(git init:*)"
+    ]
+  }
+}
