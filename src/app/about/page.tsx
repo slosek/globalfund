@@ -22,7 +22,14 @@ const values = [
   },
 ];
 
-const sectors = ["Retail", "Restaurant", "Industrial", "Office", "Medical", "Shopping Centers", "Multi-Family"];
+const sectors = [
+  { name: "Retail", image: "/images/gallery-1.jpg" },
+  { name: "Restaurant", image: "/images/gallery-5.jpg" },
+  { name: "Industrial", image: "/images/industrial-1.jpg" },
+  { name: "Office", image: "/images/office-1.jpg" },
+  { name: "Multi-Family", image: "/images/mf-1.jpg" },
+  { name: "Hospitality", image: "/images/hospitality-1.jpg" },
+];
 
 export default function About() {
   return (
@@ -81,16 +88,25 @@ export default function About() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.15}>
-              <div className="relative bg-white rounded-3xl p-12 lg:p-16 border border-gray-200 text-center shadow-sm">
-                <Image src="/logo.png" alt="Global Fund Real Estate" width={320} height={80} className="mx-auto w-64 lg:w-80 h-auto" />
-                <div className="w-12 h-1 bg-gradient-to-r from-amber via-electric to-electric-dark rounded-full mx-auto mt-6 mb-4" />
-                <p className="text-electric text-sm font-medium italic">
-                  &ldquo;Where Vision Meets Value&rdquo;
-                </p>
-                <div className="mt-6 flex justify-center gap-2">
-                  {["Phoenix", "Fort Lauderdale", "Chicago"].map((c) => (
-                    <span key={c} className="px-3 py-1 bg-gray-50 rounded-full text-xs text-ink-faint font-medium">{c}</span>
-                  ))}
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-electric/15 via-amber/10 to-violet/10 rounded-[2rem] blur-2xl opacity-60" />
+                <div className="relative grid grid-cols-2 gap-3">
+                  <div className="space-y-3">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg shadow-black/10">
+                      <Image src="/images/office-1.jpg" alt="Modern office property" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                    </div>
+                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg shadow-black/10">
+                      <Image src="/images/gallery-1.jpg" alt="Retail center" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                    </div>
+                  </div>
+                  <div className="space-y-3 pt-8">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg shadow-black/10">
+                      <Image src="/images/industrial-1.jpg" alt="Industrial building" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                    </div>
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg shadow-black/10">
+                      <Image src="/images/mf-1.jpg" alt="Multi-family property" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -99,21 +115,41 @@ export default function About() {
       </section>
 
       {/* ══ SECTORS ══ */}
-      <section className="py-20 bg-white">
+      <section className="py-24 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <AnimatedSection>
-            <span className="text-electric text-sm font-semibold">Expertise</span>
-            <h2 className="mt-2 font-display text-section font-extrabold text-ink mb-10">
-              Diverse sectors.
-            </h2>
-            <div className="flex flex-wrap gap-2.5">
-              {sectors.map((s) => (
-                <span key={s} className="px-5 py-2.5 bg-gray-50 border border-gray-100 rounded-full text-ink-muted text-sm font-medium hover:border-electric/30 hover:text-electric hover:bg-electric/5 transition-all duration-200 cursor-default">
-                  {s}
-                </span>
-              ))}
+            <div className="max-w-xl mb-12">
+              <span className="text-electric text-sm font-semibold">Expertise</span>
+              <h2 className="mt-2 font-display text-section font-extrabold text-ink">
+                Diverse sectors.
+              </h2>
+              <p className="mt-4 text-ink-muted text-lg leading-relaxed">
+                From storefronts to skyline towers, we navigate every corner of the
+                commercial real estate landscape.
+              </p>
             </div>
           </AnimatedSection>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+            {sectors.map((s, i) => (
+              <AnimatedSection key={s.name} delay={i * 0.06}>
+                <div className="group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-default">
+                  <Image
+                    src={s.image}
+                    alt={`${s.name} sector`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                    <span className="inline-block w-8 h-0.5 bg-electric mb-2 transition-all duration-300 group-hover:w-12" />
+                    <h3 className="font-display text-white text-xl lg:text-2xl font-bold">{s.name}</h3>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 

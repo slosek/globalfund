@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h4 className="text-white/30 text-xs font-medium uppercase tracking-wider mb-4">Navigate</h4>
             <div className="space-y-2.5">
-              {[{ href: "/", label: "Home" }, { href: "/about", label: "About" }, { href: "/contact", label: "Contact" }].map((l) => (
+              {[{ href: "/", label: "Home" }, { href: "/about", label: "About" }, { href: "/listings", label: "Listings" }, { href: "/contact", label: "Contact" }].map((l) => (
                 <Link key={l.href} href={l.href} className="block text-white/60 text-sm hover:text-electric transition-colors">{l.label}</Link>
               ))}
             </div>

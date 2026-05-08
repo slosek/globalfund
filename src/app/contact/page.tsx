@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const offices = [
-  { city: "Phoenix", state: "AZ", phone: "(480) 462-7900", href: "tel:+14804627900", tag: "Southwest" },
-  { city: "Fort Lauderdale", state: "FL", phone: "(954) 727-8066", href: "tel:+19547278066", tag: "Southeast" },
-  { city: "Chicago MSA", state: "IL", phone: null, href: null, tag: "Midwest" },
+  { city: "Phoenix", state: "AZ", phone: "(480) 462-7900", href: "tel:+14804627900", tag: "Southwest", image: "/images/retail-1.jpg" },
+  { city: "Fort Lauderdale", state: "FL", phone: "(954) 727-8066", href: "tel:+19547278066", tag: "Southeast", image: "/images/gallery-8.jpg" },
+  { city: "Chicago MSA", state: "IL", phone: null, href: null, tag: "Midwest", image: "/images/gallery-6.jpg" },
 ];
 
 export default function Contact() {
@@ -110,14 +111,25 @@ export default function Contact() {
 
                 <div className="space-y-3">
                   {offices.map((o) => (
-                    <div key={o.city} className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-electric/20 hover:shadow-md transition-all duration-300">
-                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-electric/10 text-electric text-[11px] font-semibold mb-2">{o.tag}</span>
-                      <h3 className="font-display text-lg font-bold text-ink">
-                        {o.city}<span className="text-ink-faint font-normal">, {o.state}</span>
-                      </h3>
-                      {o.phone && (
-                        <a href={o.href!} className="mt-1.5 inline-block text-ink-muted text-sm hover:text-electric transition-colors">{o.phone}</a>
-                      )}
+                    <div key={o.city} className="group flex bg-white rounded-2xl border border-gray-100 hover:border-electric/20 hover:shadow-md transition-all duration-300 overflow-hidden">
+                      <div className="relative w-24 sm:w-28 flex-shrink-0 overflow-hidden">
+                        <Image
+                          src={o.image}
+                          alt={`${o.city} market`}
+                          fill
+                          sizes="112px"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-5 flex-1">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full bg-electric/10 text-electric text-[11px] font-semibold mb-2">{o.tag}</span>
+                        <h3 className="font-display text-lg font-bold text-ink">
+                          {o.city}<span className="text-ink-faint font-normal">, {o.state}</span>
+                        </h3>
+                        {o.phone && (
+                          <a href={o.href!} className="mt-1.5 inline-block text-ink-muted text-sm hover:text-electric transition-colors">{o.phone}</a>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>

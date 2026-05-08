@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const services = [
@@ -40,9 +41,9 @@ const services = [
 ];
 
 const markets = [
-  { city: "Phoenix", state: "AZ", tag: "Southwest", desc: "One of America's fastest-growing metropolitan markets." },
-  { city: "Fort Lauderdale", state: "FL", tag: "Southeast", desc: "South Florida's thriving commercial corridor." },
-  { city: "Chicago MSA", state: "IL", tag: "Midwest", desc: "The nation's most robust Midwestern hub." },
+  { city: "Phoenix", state: "AZ", tag: "Southwest", desc: "One of America's fastest-growing metropolitan markets.", image: "/images/retail-1.jpg" },
+  { city: "Fort Lauderdale", state: "FL", tag: "Southeast", desc: "South Florida's thriving commercial corridor.", image: "/images/gallery-8.jpg" },
+  { city: "Chicago MSA", state: "IL", tag: "Midwest", desc: "The nation's most robust Midwestern hub.", image: "/images/gallery-6.jpg" },
 ];
 
 export default function Home() {
@@ -56,48 +57,79 @@ export default function Home() {
         <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-violet/[0.04] rounded-full blur-[80px]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-32 lg:py-0">
-          <div className="max-w-4xl">
-            <div className="stagger-1">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
-                3 Markets &middot; 5+ Sectors &middot; Limitless Potential
-              </span>
-            </div>
-
-            <h1 className="mt-8 font-display text-hero font-extrabold text-ink stagger-2">
-              Where Vision<br />
-              <span className="text-electric">Meets Value.</span>
-            </h1>
-
-            <p className="mt-6 text-ink-muted text-lg sm:text-xl leading-relaxed max-w-lg font-body stagger-3">
-              Global Fund Real Estate Group delivers premier acquisitions,
-              management, and leasing across America&apos;s most
-              dynamic markets.
-            </p>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-3 stagger-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-electric text-white text-sm font-semibold rounded-full hover:bg-electric-dark hover:shadow-lg hover:shadow-electric/25 transition-all duration-300"
-              >
-                Start a Conversation
-                <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-100 text-ink text-sm font-semibold rounded-full hover:bg-gray-200 transition-all duration-200"
-              >
-                Our Story
-              </Link>
-            </div>
-
-            <div className="mt-14 flex items-center gap-5 stagger-5">
-              {["Phoenix, AZ", "Fort Lauderdale, FL", "Chicago, IL"].map((loc, i) => (
-                <span key={loc} className="flex items-center gap-3">
-                  {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300" />}
-                  <span className="text-ink-faint text-xs font-medium tracking-wide">{loc}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-7">
+              <div className="stagger-1">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-sm font-medium">
+                  <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
+                  3 Markets &middot; 5+ Sectors &middot; Limitless Potential
                 </span>
-              ))}
+              </div>
+
+              <h1 className="mt-8 font-display text-hero font-extrabold text-ink stagger-2">
+                Where Vision<br />
+                <span className="text-electric">Meets Value.</span>
+              </h1>
+
+              <p className="mt-6 text-ink-muted text-lg sm:text-xl leading-relaxed max-w-lg font-body stagger-3">
+                Global Fund Real Estate Group delivers premier acquisitions,
+                management, and leasing across America&apos;s most
+                dynamic markets.
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-3 stagger-4">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-electric text-white text-sm font-semibold rounded-full hover:bg-electric-dark hover:shadow-lg hover:shadow-electric/25 transition-all duration-300"
+                >
+                  Start a Conversation
+                  <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-100 text-ink text-sm font-semibold rounded-full hover:bg-gray-200 transition-all duration-200"
+                >
+                  Our Story
+                </Link>
+              </div>
+
+              <div className="mt-14 flex items-center gap-5 stagger-5">
+                {["Phoenix, AZ", "Fort Lauderdale, FL", "Chicago, IL"].map((loc, i) => (
+                  <span key={loc} className="flex items-center gap-3">
+                    {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300" />}
+                    <span className="text-ink-faint text-xs font-medium tracking-wide">{loc}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 stagger-3">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-electric/20 via-amber/10 to-violet/15 rounded-[2rem] blur-2xl opacity-70" />
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-black/10 border border-gray-100">
+                  <Image
+                    src="/images/gallery-3.jpg"
+                    alt="Premier waterfront commercial real estate"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent">
+                    <p className="text-white/90 text-xs font-medium tracking-wider uppercase">Featured Markets</p>
+                    <p className="text-white font-display text-xl font-bold mt-1">Coast to Coast</p>
+                  </div>
+                </div>
+                <div className="hidden lg:flex absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-gray-100 items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-electric/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-electric" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-ink-faint text-xs font-medium">Trusted Since</p>
+                    <p className="text-ink font-display font-bold">Decade+</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -176,13 +208,25 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {markets.map((m, i) => (
               <AnimatedSection key={m.city} delay={i * 0.1}>
-                <div className="group bg-gray-50 rounded-2xl p-8 lg:p-10 border border-gray-100 hover:bg-white hover:border-electric/20 hover:shadow-xl hover:shadow-electric/[0.04] transition-all duration-400 h-full">
-                  <span className="inline-block px-3 py-1 rounded-full bg-electric/10 text-electric text-xs font-semibold mb-4">
-                    {m.tag}
-                  </span>
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">{m.city}</h3>
-                  <span className="text-ink-faint text-sm">{m.state}</span>
-                  <p className="mt-3 text-ink-muted text-sm leading-relaxed">{m.desc}</p>
+                <div className="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-electric/20 hover:shadow-xl hover:shadow-electric/[0.06] transition-all duration-400 h-full overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={m.image}
+                      alt={`${m.city} commercial real estate`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 inline-block px-3 py-1 rounded-full bg-white/95 backdrop-blur text-electric text-xs font-semibold">
+                      {m.tag}
+                    </span>
+                  </div>
+                  <div className="p-7 lg:p-8">
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">{m.city}</h3>
+                    <span className="text-ink-faint text-sm">{m.state}</span>
+                    <p className="mt-3 text-ink-muted text-sm leading-relaxed">{m.desc}</p>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
