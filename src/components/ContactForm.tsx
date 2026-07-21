@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/components/Analytics";
 
 export default function ContactForm() {
   const [opened, setOpened] = useState(false);
@@ -19,6 +20,10 @@ export default function ContactForm() {
         .join("\n")
     );
 
+    trackEvent("generate_lead", {
+      method: "contact_form_email_draft",
+      form_name: "website_inquiry",
+    });
     window.location.href = `mailto:info@globalfundreg.com?subject=${subject}&body=${body}`;
     setOpened(true);
   };
