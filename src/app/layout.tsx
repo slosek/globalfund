@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   },
   description:
     "Commercial real estate acquisitions, sales, leasing, and asset management across Phoenix, South Florida, and the Chicago MSA.",
+  verification: {
+    google: "xASA6F5NUCWGpx7NyyMEbvM-enXCl6JU39yls1s6GOY",
+  },
   openGraph: {
     title: "Global Fund Real Estate Group",
     description:
