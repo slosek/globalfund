@@ -6,6 +6,9 @@ import AnimatedSection from "@/components/AnimatedSection";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact Global Fund Real Estate Group in Phoenix, Fort Lauderdale, or the Chicago MSA.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 const offices = [

@@ -6,6 +6,9 @@ import AnimatedSection from "@/components/AnimatedSection";
 export const metadata: Metadata = {
   title: "About",
   description: "The commercial real estate perspective and principles behind Global Fund Real Estate Group.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const values = [

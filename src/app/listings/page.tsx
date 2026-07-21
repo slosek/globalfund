@@ -5,6 +5,9 @@ import ListingsEmbed from "@/components/ListingsEmbed";
 export const metadata: Metadata = {
   title: "Property Listings",
   description: "Explore commercial properties represented by Global Fund Real Estate Group.",
+  alternates: {
+    canonical: "/listings",
+  },
 };
 
 export default function Listings() {
