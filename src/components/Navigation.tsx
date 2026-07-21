@@ -34,7 +34,7 @@ export default function Navigation() {
           <Image src="/logo.png" alt="Global Fund Real Estate Group" width={800} height={319} className="h-auto w-[158px] sm:w-[184px]" priority />
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
+        <div className="hidden items-center gap-9 lg:flex">
           <div className="flex items-center gap-8">
             {links.map((link) => (
               <Link
@@ -55,7 +55,7 @@ export default function Navigation() {
 
         <button
           type="button"
-          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 md:hidden"
+          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
@@ -69,7 +69,10 @@ export default function Navigation() {
         </button>
       </nav>
 
-      <div id="mobile-menu" className={`overflow-hidden bg-stone-50 transition-[max-height] duration-500 md:hidden ${open ? "max-h-[500px]" : "max-h-0"}`}>
+      <div
+        id="mobile-menu"
+        className={`overflow-hidden bg-stone-50 transition-[max-height,visibility] duration-500 lg:hidden ${open ? "visible max-h-[500px]" : "invisible max-h-0"}`}
+      >
         <div className="border-t border-ink/10 px-5 pb-8 pt-4 sm:px-8">
           {links.map((link, index) => (
             <Link key={link.href} href={link.href} className="grid grid-cols-[2rem_1fr] items-center border-b border-ink/10 py-4">

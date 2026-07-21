@@ -31,8 +31,8 @@ module.exports = {
       },
       fontSize: {
         hero: ["clamp(4.5rem, 9.7vw, 9.6rem)", { lineHeight: "0.79", letterSpacing: "-0.06em" }],
-        section: ["clamp(3.2rem, 6.4vw, 6rem)", { lineHeight: "0.88", letterSpacing: "-0.045em" }],
-        statement: ["clamp(3.6rem, 7.6vw, 7.8rem)", { lineHeight: "0.88", letterSpacing: "-0.05em" }],
+        section: ["clamp(2.9rem, 6.2vw, 5.8rem)", { lineHeight: "0.9", letterSpacing: "-0.04em" }],
+        statement: ["clamp(3.35rem, 6.1vw, 6.75rem)", { lineHeight: "0.9", letterSpacing: "-0.045em" }],
       },
     },
   },

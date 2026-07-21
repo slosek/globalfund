@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const EMBED_ORIGIN = "https://app.creretailmaps.com";
-const EMBED_URL = `${EMBED_ORIGIN}/listings/slosek/embed?mode=grid`;
+const EMBED_ORIGIN = "https://www.crebuilder.com";
+const EMBED_URL = `${EMBED_ORIGIN}/listings/98bca496-29b3-4838-aa20-086cb6fa61c0/embed?mode=grid`;
 
 export default function ListingsEmbed() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -16,11 +16,24 @@ export default function ListingsEmbed() {
     const parsedPropertyId = propertyParam ? Number.parseInt(propertyParam, 10) : null;
     const propertyId = Number.isFinite(parsedPropertyId) ? parsedPropertyId : null;
 
-    const handleLoad = () => {
+    let initAttempts = 0;
+    let initTimer: number | undefined;
+
+    const postInit = () => {
       iframe.contentWindow?.postMessage(
         { type: "cre-init", propertyId },
         EMBED_ORIGIN
       );
+    };
+
+    const startInitHandshake = () => {
+      postInit();
+      if (initTimer) window.clearInterval(initTimer);
+      initTimer = window.setInterval(() => {
+        initAttempts += 1;
+        postInit();
+        if (initAttempts >= 40 && initTimer) window.clearInterval(initTimer);
+      }, 1500);
     };
 
     const handleMessage = (event: MessageEvent) => {
@@ -28,6 +41,7 @@ export default function ListingsEmbed() {
       if (!event.data || typeof event.data.type !== "string") return;
 
       if (event.data.type === "cre-listings-resize" && Number.isFinite(event.data.height)) {
+        if (initTimer) window.clearInterval(initTimer);
         iframe.style.height = `${Math.min(Math.max(event.data.height, 700), 5000)}px`;
       }
 
@@ -51,10 +65,12 @@ export default function ListingsEmbed() {
       }
     };
 
-    iframe.addEventListener("load", handleLoad);
+    iframe.addEventListener("load", startInitHandshake);
     window.addEventListener("message", handleMessage);
+    startInitHandshake();
     return () => {
-      iframe.removeEventListener("load", handleLoad);
+      if (initTimer) window.clearInterval(initTimer);
+      iframe.removeEventListener("load", startInitHandshake);
       window.removeEventListener("message", handleMessage);
     };
   }, []);

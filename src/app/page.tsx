@@ -76,19 +76,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-stone-50 py-24 lg:py-36">
+      <section className="overflow-hidden bg-stone-50 py-20 sm:py-24 lg:py-28">
         <AnimatedSection className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-            <p className="eyebrow lg:col-span-3">Our perspective</p>
-            <p className="text-balance font-display text-statement text-ink lg:col-span-9">
+          <div className="max-w-[1240px]">
+            <p className="eyebrow">Our perspective</p>
+            <p className="mt-8 text-balance font-display text-statement text-ink sm:mt-10">
               Value is rarely hidden.<br />It is <span className="spectrum-text italic">recognized, shaped,</span><br />and carefully realized.
             </p>
           </div>
-          <div className="mt-16 grid gap-8 border-t border-ink/15 pt-10 lg:grid-cols-12">
-            <p className="max-w-md text-sm leading-7 text-ink-muted lg:col-span-4 lg:col-start-7">
+          <div className="mt-12 grid max-w-4xl gap-7 border-t border-ink/15 pt-8 sm:grid-cols-2 sm:gap-12 lg:mt-14 lg:pt-9">
+            <p className="max-w-md text-sm leading-7 text-ink-muted">
               Every assignment starts with the asset, the market, and the client&apos;s objective. We turn that context into a focused path forward.
             </p>
-            <p className="max-w-md text-sm leading-7 text-ink-muted lg:col-span-3 lg:col-start-10">
+            <p className="max-w-md text-sm leading-7 text-ink-muted">
               From the first conversation through the final detail, senior attention stays close to the work.
             </p>
           </div>

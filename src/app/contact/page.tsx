@@ -33,16 +33,16 @@ export default function Contact() {
         <div className="mx-auto grid max-w-[1500px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20 lg:px-12">
           <AnimatedSection className="lg:col-span-7">
             <p className="eyebrow">Send an inquiry</p>
-            <h2 className="mt-8 max-w-3xl font-display text-section text-ink">Give us the context.<br /><span className="italic text-ink-faint">We&apos;ll follow up directly.</span></h2>
+            <h2 className="mt-8 max-w-3xl break-words font-display text-section text-ink">Give us the context.<br /><span className="italic text-ink-faint">We&apos;ll follow up directly.</span></h2>
             <div className="mt-12 rounded-[2rem] border border-ink/10 bg-white p-6 shadow-float sm:p-10 lg:p-12">
               <ContactForm />
             </div>
           </AnimatedSection>
 
           <AnimatedSection className="lg:col-span-4 lg:col-start-9 lg:pt-20" delay={0.1}>
-            <div className="rounded-[2rem] bg-ink p-8 text-white sm:p-10">
+            <div className="overflow-hidden rounded-[2rem] bg-ink p-7 text-white sm:p-10">
               <p className="eyebrow !text-white/40">Direct contact</p>
-              <a href="mailto:info@globalfundreg.com" className="mt-8 block break-words font-display text-4xl leading-none text-white transition-colors hover:text-gold">info@globalfundreg.com</a>
+              <a href="mailto:info@globalfundreg.com" className="mt-8 block break-all font-display text-[1.75rem] leading-none text-white transition-colors hover:text-gold sm:break-words sm:text-4xl">info@globalfundreg.com</a>
               <div className="spectrum-line mt-9 h-1 w-24 rounded-full" />
               <div className="mt-9 space-y-6 border-t border-white/15 pt-8">
                 <div>
