@@ -6,122 +6,151 @@ const services = [
   {
     number: "01",
     title: "Acquisitions",
-    description:
-      "Market intelligence, disciplined underwriting, and a broad relationship network focused on opportunities with durable value.",
+    kicker: "Find the signal",
+    description: "Market intelligence, disciplined underwriting, and a broad relationship network focused on opportunities with durable value.",
     image: "/images/acquisitions-retail.webp",
-    alt: "Aerial view of a retail property",
+    alt: "Aerial view of a commercial retail property",
   },
   {
     number: "02",
     title: "Sales & Leasing",
-    description:
-      "Positioning, outreach, and transaction strategy designed to connect each asset with the right buyer or tenant.",
+    kicker: "Create the match",
+    description: "Positioning, outreach, and transaction strategy designed to connect each asset with the right buyer or tenant.",
     image: "/images/leasing-office.webp",
     alt: "Contemporary commercial office interior",
   },
   {
     number: "03",
     title: "Asset Management",
-    description:
-      "Hands-on oversight that aligns operations, occupancy, and capital decisions with the long-term objectives of ownership.",
+    kicker: "Protect the upside",
+    description: "Hands-on oversight aligning operations, occupancy, and capital decisions with the long-term objectives of ownership.",
     image: "/images/asset-management.webp",
     alt: "Commercial shopping center exterior",
   },
 ];
 
 const markets = [
-  { city: "Phoenix", region: "Arizona", detail: "Southwest growth market" },
-  { city: "Fort Lauderdale", region: "South Florida", detail: "Atlantic commercial corridor" },
-  { city: "Chicago MSA", region: "Illinois", detail: "Midwest business hub" },
+  { city: "Phoenix", region: "Arizona", note: "Southwest growth market", image: "/images/phoenix-downtown.webp", alt: "Downtown Phoenix commercial district" },
+  { city: "Fort Lauderdale", region: "South Florida", note: "Atlantic commercial corridor", image: "/images/gallery-3.jpg", alt: "Fort Lauderdale waterfront and skyline" },
+  { city: "Chicago MSA", region: "Illinois", note: "Midwest business hub", image: "/images/gallery-6.jpg", alt: "Modern commercial office property" },
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-ink/10 bg-stone-50 pt-28 lg:pt-32">
-        <div className="mx-auto grid min-h-[760px] max-w-[1440px] lg:grid-cols-12">
-          <div className="flex flex-col justify-between px-5 py-14 sm:px-8 lg:col-span-7 lg:px-12 lg:py-20 xl:py-24">
-            <div>
-              <p className="eyebrow reveal-1">Global Fund Real Estate Group</p>
-              <h1 className="mt-9 max-w-5xl font-display text-hero text-ink reveal-2">
-                Real estate,
-                <span className="block italic text-ink-muted">made valuable.</span>
-              </h1>
-              <p className="mt-8 max-w-xl text-base leading-8 text-ink-muted sm:text-lg reveal-3">
-                Commercial real estate acquisitions, sales, leasing, and asset management across Phoenix, South Florida, and the Chicago MSA.
-              </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row reveal-4">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
-                  Start a conversation <span aria-hidden="true">→</span>
-                </Link>
-                <Link href="/listings" className="inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3.5 text-sm font-bold text-ink transition-colors hover:bg-white">
-                  Explore listings
-                </Link>
-              </div>
-            </div>
+      <section className="relative min-h-[880px] overflow-hidden bg-stone-50 pt-[85px] lg:min-h-[930px]">
+        <Image src="/images/hero-v2.jpg" alt="Mixed-use commercial real estate district at golden hour" fill priority sizes="100vw" className="object-cover object-[66%_center]" />
+        <div className="paper-fade absolute inset-0" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink/55 to-transparent lg:h-56" />
 
-            <div className="mt-16 grid max-w-2xl grid-cols-3 gap-4 border-t border-ink/15 pt-7 lg:mt-20">
-              {markets.map((market) => (
-                <div key={market.city}>
-                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink">{market.city}</p>
-                  <p className="mt-1 text-[11px] leading-4 text-ink-faint">{market.region}</p>
-                </div>
-              ))}
+        <div className="relative z-10 mx-auto flex min-h-[795px] max-w-[1500px] flex-col justify-between px-5 pb-8 pt-16 sm:px-8 lg:min-h-[845px] lg:px-12 lg:pb-10 lg:pt-20">
+          <div className="max-w-[920px]">
+            <p className="eyebrow reveal-1">Commercial real estate · Three core markets</p>
+            <h1 className="mt-10 max-w-[900px] font-display text-hero text-ink reveal-2">
+              Commercial<br />real estate,<br />made <span className="spectrum-text italic">valuable.</span>
+            </h1>
+            <p className="mt-9 max-w-lg text-[15px] leading-7 text-ink-muted sm:text-base sm:leading-8 reveal-3">
+              Acquisitions, sales, leasing, and asset management shaped by clear strategy and carried through with committed execution.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row reveal-4">
+              <Link href="/contact" className="group inline-flex items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.13em] text-white transition-colors hover:bg-ink-soft">
+                Start a conversation <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              </Link>
+              <Link href="/listings" className="inline-flex items-center justify-center rounded-full border border-ink/20 bg-stone-50/75 px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.13em] text-ink backdrop-blur-sm transition-colors hover:bg-white">
+                View available properties
+              </Link>
             </div>
           </div>
 
-          <div className="relative min-h-[520px] overflow-hidden bg-ink lg:col-span-5 lg:min-h-full">
-            <Image
-              src="/images/phoenix-downtown.webp"
-              alt="Downtown Phoenix commercial and multifamily district"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/5 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-7 text-white sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">Three markets · One standard</p>
-              <p className="mt-3 max-w-sm font-display text-3xl leading-tight sm:text-4xl">Local execution with a broader point of view.</p>
-            </div>
+          <div className="grid overflow-hidden rounded-2xl border border-white/20 bg-ink/75 text-white shadow-soft backdrop-blur-md sm:grid-cols-3 lg:ml-auto lg:w-[720px]">
+            {markets.map((market, index) => (
+              <div key={market.city} className="flex items-center gap-4 border-b border-white/15 px-5 py-4 last:border-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+                <span className="text-[10px] font-extrabold text-white/35">0{index + 1}</span>
+                <div>
+                  <p className="font-display text-xl leading-none">{market.city}</p>
+                  <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white/45">{market.region}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-24 lg:py-32">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <AnimatedSection className="grid gap-10 border-b border-ink/15 pb-16 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-5">
-              <p className="eyebrow">How we work</p>
-              <h2 className="mt-7 font-display text-section text-ink">Clear thinking for consequential decisions.</h2>
+      <section className="overflow-hidden bg-stone-50 py-24 lg:py-36">
+        <AnimatedSection className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+            <p className="eyebrow lg:col-span-3">Our perspective</p>
+            <p className="text-balance font-display text-statement text-ink lg:col-span-9">
+              Value is rarely hidden.<br />It is <span className="spectrum-text italic">recognized, shaped,</span><br />and carefully realized.
+            </p>
+          </div>
+          <div className="mt-16 grid gap-8 border-t border-ink/15 pt-10 lg:grid-cols-12">
+            <p className="max-w-md text-sm leading-7 text-ink-muted lg:col-span-4 lg:col-start-7">
+              Every assignment starts with the asset, the market, and the client&apos;s objective. We turn that context into a focused path forward.
+            </p>
+            <p className="max-w-md text-sm leading-7 text-ink-muted lg:col-span-3 lg:col-start-10">
+              From the first conversation through the final detail, senior attention stays close to the work.
+            </p>
+          </div>
+        </AnimatedSection>
+      </section>
+
+      <section className="bg-white py-24 lg:py-36">
+        <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="flex flex-col gap-8 border-b border-ink/15 pb-14 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="eyebrow">What we do</p>
+              <h2 className="mt-7 max-w-4xl font-display text-section text-ink">One point of view.<br /><span className="italic text-ink-faint">The full property cycle.</span></h2>
             </div>
-            <div className="flex items-end lg:col-span-5 lg:col-start-8">
-              <p className="max-w-xl text-lg leading-8 text-ink-muted">
-                Every assignment begins with the asset, the market, and the client’s objective. From there, we build a focused strategy and stay close to the details through execution.
-              </p>
-            </div>
+            <p className="max-w-sm text-sm leading-7 text-ink-muted">Integrated services keep strategy connected to execution—and execution connected to long-term value.</p>
           </AnimatedSection>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div className="mt-20 space-y-20 lg:space-y-28">
             {services.map((service, index) => (
-              <AnimatedSection key={service.title} delay={index * 0.08}>
-                <article className="card-lift group h-full overflow-hidden rounded-[1.75rem] border border-ink/10 bg-stone-50">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
+              <AnimatedSection key={service.title} delay={index * 0.05} className={`grid items-center gap-10 lg:grid-cols-12 lg:gap-16 ${index % 2 ? "" : ""}`}>
+                <div className={`image-zoom relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-stone-100 lg:col-span-7 ${index % 2 ? "lg:col-start-6" : ""}`}>
+                  <Image src={service.image} alt={service.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/30 to-transparent" />
+                  <span className="absolute bottom-6 left-6 rounded-full border border-white/25 bg-ink/55 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white backdrop-blur-md">{service.kicker}</span>
+                </div>
+                <div className={`lg:col-span-4 ${index % 2 ? "lg:col-start-1 lg:row-start-1" : "lg:col-start-9"}`}>
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-extrabold tracking-[0.16em] text-ink-faint">{service.number}</span>
+                    <span className="spectrum-line h-0.5 w-16" />
                   </div>
-                  <div className="p-7 sm:p-9">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold tracking-[0.16em] text-ink-faint">{service.number}</span>
-                      <span className="spectrum-line h-1 w-14 rounded-full" />
+                  <h3 className="mt-7 font-display text-[clamp(3.4rem,5vw,5.5rem)] leading-[0.87] tracking-[-0.04em] text-ink">{service.title}</h3>
+                  <p className="mt-7 max-w-md text-sm leading-7 text-ink-muted">{service.description}</p>
+                  <Link href="/contact" className="mt-8 inline-flex items-center gap-3 text-[10px] font-extrabold uppercase tracking-[0.15em] text-ink hover:text-violet">Discuss your objective <span aria-hidden="true">→</span></Link>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grain overflow-hidden bg-ink py-24 text-white lg:py-36">
+        <div className="relative z-10 mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <p className="eyebrow !text-white/45">Where we work</p>
+              <h2 className="mt-7 font-display text-section text-white">Local context.<br /><span className="spectrum-text italic">Broader perspective.</span></h2>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-white/50 lg:col-span-4 lg:col-start-9">Regional presence brings sharper market fluency, responsive execution, and relationships that move opportunities forward.</p>
+          </AnimatedSection>
+
+          <div className="mt-16 grid gap-5 lg:grid-cols-3">
+            {markets.map((market, index) => (
+              <AnimatedSection key={market.city} delay={index * 0.08}>
+                <article className="image-zoom group relative min-h-[540px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-ink-soft">
+                  <Image src={market.image} alt={market.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover opacity-75" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
+                    <div className="flex items-center justify-between border-b border-white/20 pb-5">
+                      <span className="text-[10px] font-extrabold text-white/40">0{index + 1}</span>
+                      <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/45">{market.region}</span>
                     </div>
-                    <h3 className="mt-8 font-display text-4xl text-ink">{service.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-ink-muted">{service.description}</p>
+                    <h3 className="mt-7 font-display text-5xl leading-[0.9] text-white sm:text-6xl">{market.city}</h3>
+                    <p className="mt-4 text-xs uppercase tracking-[0.13em] text-white/45">{market.note}</p>
                   </div>
                 </article>
               </AnimatedSection>
@@ -130,66 +159,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grain overflow-hidden bg-ink py-24 text-white lg:py-32">
-        <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <AnimatedSection className="grid gap-14 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <p className="eyebrow !text-white/50">Where we work</p>
-              <h2 className="mt-7 font-display text-section text-white">Opportunity is local.</h2>
-              <p className="mt-7 max-w-md text-base leading-8 text-white/55">
-                Our regional presence brings market context and responsive execution to each engagement.
-              </p>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              {markets.map((market, index) => (
-                <div key={market.city} className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-white/20 py-7 first:border-t-0 first:pt-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center">
-                  <span className="text-xs font-bold text-white/35">0{index + 1}</span>
-                  <div>
-                    <p className="font-display text-3xl sm:text-4xl">{market.city}</p>
-                    <p className="mt-1 text-sm text-white/45">{market.region}</p>
-                  </div>
-                  <p className="col-start-2 text-xs uppercase tracking-[0.12em] text-white/45 sm:col-start-auto">{market.detail}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      <section className="bg-stone-100 py-24 lg:py-32">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <AnimatedSection className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:col-span-6">
-              <Image
-                src="/images/gallery-6.jpg"
-                alt="Modern office property"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+      <section className="bg-stone-100 py-24 lg:py-36">
+        <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
+            <div className="relative lg:col-span-6">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-soft">
+                <Image src="/images/gallery-5.jpg" alt="Contemporary commercial hospitality space" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+              </div>
+              <div className="spectrum-line absolute -bottom-4 left-8 h-2 w-1/2 rounded-full" />
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
               <p className="eyebrow">Client perspective</p>
-              <blockquote className="mt-8 font-display text-4xl leading-[1.08] text-ink sm:text-5xl">
+              <blockquote className="mt-8 font-display text-[clamp(3rem,5vw,5.1rem)] leading-[0.93] tracking-[-0.035em] text-ink">
                 “Global Fund helped us secure a prime location for our new corporate office and manufacturing facility.”
               </blockquote>
-              <p className="mt-7 text-sm font-bold text-ink">Doron Zacharin</p>
-              <p className="mt-1 text-sm text-ink-faint">PressTech · Miami, Florida</p>
+              <div className="mt-9 border-t border-ink/15 pt-6">
+                <p className="text-xs font-extrabold uppercase tracking-[0.13em] text-ink">Doron Zacharin</p>
+                <p className="mt-1 text-xs text-ink-faint">PressTech · Miami, Florida</p>
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="bg-white py-24 lg:py-32">
-        <AnimatedSection className="mx-auto max-w-5xl px-5 text-center sm:px-8">
+      <section className="bg-stone-50 py-24 lg:py-36">
+        <AnimatedSection className="mx-auto max-w-6xl px-5 text-center sm:px-8">
           <p className="eyebrow">What comes next</p>
-          <h2 className="mt-8 text-balance font-display text-section text-ink">Let’s find the value in your next move.</h2>
-          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-ink-muted">
-            Tell us about the asset, requirement, or opportunity you are evaluating.
-          </p>
-          <Link href="/contact" className="mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
-            Talk with our team <span aria-hidden="true">→</span>
-          </Link>
+          <h2 className="mt-8 text-balance font-display text-statement text-ink">See the opportunity.<br /><span className="spectrum-text italic">Shape the value.</span></h2>
+          <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-ink-muted">Tell us about the asset, requirement, or market question you are evaluating.</p>
+          <Link href="/contact" className="group mt-10 inline-flex items-center gap-4 rounded-full bg-ink px-7 py-4 text-[11px] font-extrabold uppercase tracking-[0.13em] text-white hover:bg-ink-soft">Talk with our team <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></Link>
         </AnimatedSection>
       </section>
     </>

@@ -24,27 +24,27 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="block text-sm font-semibold text-ink-muted">
+    <form onSubmit={handleSubmit} className="space-y-7">
+      <div className="grid gap-7 sm:grid-cols-2">
+        <label className="block text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink-muted">
           Name
-          <input name="name" required autoComplete="name" className="mt-2 w-full border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none transition-colors focus:border-violet" />
+          <input name="name" required autoComplete="name" className="field mt-2" />
         </label>
-        <label className="block text-sm font-semibold text-ink-muted">
+        <label className="block text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink-muted">
           Email
-          <input name="email" type="email" required autoComplete="email" className="mt-2 w-full border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none transition-colors focus:border-violet" />
+          <input name="email" type="email" required autoComplete="email" className="field mt-2" />
         </label>
       </div>
-      <label className="block text-sm font-semibold text-ink-muted">
-        Company <span className="font-normal text-ink-faint">(optional)</span>
-        <input name="company" autoComplete="organization" className="mt-2 w-full border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none transition-colors focus:border-violet" />
+      <label className="block text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink-muted">
+        Company <span className="font-normal normal-case tracking-normal text-ink-faint">(optional)</span>
+        <input name="company" autoComplete="organization" className="field mt-2" />
       </label>
-      <label className="block text-sm font-semibold text-ink-muted">
+      <label className="block text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink-muted">
         How can we help?
-        <textarea name="message" required rows={5} className="mt-2 w-full resize-y border-b border-ink/25 bg-transparent px-0 py-3 text-base text-ink outline-none transition-colors focus:border-violet" />
+        <textarea name="message" required rows={5} className="field mt-2 resize-y" />
       </label>
-      <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="inline-flex w-fit items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
+      <div className="flex flex-col gap-5 pt-3 sm:flex-row sm:items-center sm:justify-between">
+        <button type="submit" className="group inline-flex w-fit items-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-extrabold uppercase tracking-[0.13em] text-white transition-colors hover:bg-ink-soft">
           Open email draft <span aria-hidden="true">↗</span>
         </button>
         <p className="max-w-xs text-xs leading-5 text-ink-faint">

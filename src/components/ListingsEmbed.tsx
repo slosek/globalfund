@@ -67,7 +67,7 @@ export default function ListingsEmbed() {
       width="100%"
       height={1100}
       loading="eager"
-      className="min-h-[700px] w-full rounded-2xl border border-ink/10 bg-white shadow-soft"
+      className="min-h-[700px] w-full rounded-[1.75rem] border border-ink/10 bg-white shadow-soft"
     />
   );
 }

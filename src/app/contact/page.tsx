@@ -5,97 +5,84 @@ import AnimatedSection from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Contact Global Fund Real Estate Group in Phoenix, Fort Lauderdale, or the Chicago MSA.",
+  description: "Contact Global Fund Real Estate Group in Phoenix, Fort Lauderdale, or the Chicago MSA.",
 };
 
 const offices = [
-  {
-    city: "Phoenix",
-    region: "Arizona",
-    phone: "(480) 462-7900",
-    href: "tel:+14804627900",
-    image: "/images/retail-1.jpg",
-  },
-  {
-    city: "Fort Lauderdale",
-    region: "South Florida",
-    phone: "(954) 727-8066",
-    href: "tel:+19547278066",
-    image: "/images/gallery-8.jpg",
-  },
-  {
-    city: "Chicago MSA",
-    region: "Illinois",
-    phone: null,
-    href: null,
-    image: "/images/gallery-6.jpg",
-  },
+  { city: "Phoenix", region: "Arizona", phone: "(480) 462-7900", href: "tel:+14804627900", image: "/images/retail-1.jpg", alt: "Phoenix commercial retail corridor" },
+  { city: "Fort Lauderdale", region: "South Florida", phone: "(954) 727-8066", href: "tel:+19547278066", image: "/images/gallery-3.jpg", alt: "Fort Lauderdale waterfront and skyline" },
+  { city: "Chicago MSA", region: "Illinois", phone: null, href: null, image: "/images/gallery-6.jpg", alt: "Chicago-area commercial office property" },
 ];
 
 export default function Contact() {
   return (
     <>
-      <section className="border-b border-ink/10 bg-stone-50 px-5 pb-20 pt-40 sm:px-8 lg:px-12 lg:pb-28 lg:pt-48">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="eyebrow reveal-1">Contact</p>
-          <div className="mt-8 grid items-end gap-10 lg:grid-cols-12">
-            <h1 className="font-display text-hero text-ink reveal-2 lg:col-span-8">
-              Let’s talk
-              <span className="block italic text-ink-muted">real estate.</span>
-            </h1>
-            <p className="max-w-md pb-2 text-base leading-8 text-ink-muted reveal-3 lg:col-span-3 lg:col-start-10">
-              Tell us about the property, requirement, or market question you are working through.
-            </p>
-          </div>
+      <section className="relative min-h-[680px] overflow-hidden bg-ink pt-[85px] text-white">
+        <Image src="/images/hero-v2.jpg" alt="Commercial real estate district at golden hour" fill priority sizes="100vw" className="object-cover object-center" />
+        <div className="absolute inset-0 bg-ink/50" />
+        <div className="ink-fade absolute inset-0" />
+        <div className="relative z-10 mx-auto flex min-h-[595px] max-w-[1500px] flex-col justify-center px-5 py-20 sm:px-8 lg:px-12">
+          <p className="eyebrow !text-white/50 reveal-1">Start a conversation</p>
+          <h1 className="mt-10 max-w-5xl font-display text-hero text-white reveal-2">Let&apos;s talk<br /><span className="spectrum-text italic">real estate.</span></h1>
+          <p className="mt-9 max-w-lg text-base leading-8 text-white/62 reveal-3">Tell us about the property, requirement, or market question you are working through.</p>
         </div>
+        <div className="spectrum-line absolute inset-x-0 bottom-0 h-1" />
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="mx-auto grid max-w-[1440px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20 lg:px-12">
+      <section className="bg-stone-50 py-24 lg:py-36">
+        <div className="mx-auto grid max-w-[1500px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20 lg:px-12">
           <AnimatedSection className="lg:col-span-7">
             <p className="eyebrow">Send an inquiry</p>
-            <h2 className="mt-7 max-w-xl font-display text-5xl leading-[0.95] text-ink sm:text-6xl">Give us the context. We’ll follow up directly.</h2>
-            <div className="mt-12 rounded-[1.75rem] bg-stone-100 p-6 sm:p-10">
+            <h2 className="mt-8 max-w-3xl font-display text-section text-ink">Give us the context.<br /><span className="italic text-ink-faint">We&apos;ll follow up directly.</span></h2>
+            <div className="mt-12 rounded-[2rem] border border-ink/10 bg-white p-6 shadow-float sm:p-10 lg:p-12">
               <ContactForm />
             </div>
           </AnimatedSection>
 
-          <AnimatedSection className="lg:col-span-4 lg:col-start-9" delay={0.1}>
-            <p className="eyebrow">Direct contact</p>
-            <a href="mailto:info@globalfundreg.com" className="mt-7 block break-words font-display text-3xl text-ink transition-colors hover:text-violet sm:text-4xl">
-              info@globalfundreg.com
-            </a>
-            <div className="mt-12 border-t border-ink/15 pt-8">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink-faint">Office lines</p>
-              <a href="tel:+14804627900" className="mt-5 block text-sm font-semibold text-ink hover:text-violet">Phoenix · (480) 462-7900</a>
-              <a href="tel:+19547278066" className="mt-3 block text-sm font-semibold text-ink hover:text-violet">Fort Lauderdale · (954) 727-8066</a>
+          <AnimatedSection className="lg:col-span-4 lg:col-start-9 lg:pt-20" delay={0.1}>
+            <div className="rounded-[2rem] bg-ink p-8 text-white sm:p-10">
+              <p className="eyebrow !text-white/40">Direct contact</p>
+              <a href="mailto:info@globalfundreg.com" className="mt-8 block break-words font-display text-4xl leading-none text-white transition-colors hover:text-gold">info@globalfundreg.com</a>
+              <div className="spectrum-line mt-9 h-1 w-24 rounded-full" />
+              <div className="mt-9 space-y-6 border-t border-white/15 pt-8">
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/35">Phoenix</p>
+                  <a href="tel:+14804627900" className="mt-2 block text-sm text-white/70 hover:text-white">(480) 462-7900</a>
+                </div>
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/35">Fort Lauderdale</p>
+                  <a href="tel:+19547278066" className="mt-2 block text-sm text-white/70 hover:text-white">(954) 727-8066</a>
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="bg-stone-100 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <AnimatedSection>
-            <p className="eyebrow">Our markets</p>
-            <h2 className="mt-7 max-w-3xl font-display text-section text-ink">Three regions. One responsive team.</h2>
+      <section className="bg-white py-24 lg:py-36">
+        <div className="mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="eyebrow">Our markets</p>
+              <h2 className="mt-8 font-display text-section text-ink">Three regions.<br /><span className="spectrum-text italic">One responsive team.</span></h2>
+            </div>
+            <p className="max-w-sm text-sm leading-7 text-ink-muted lg:col-span-3 lg:col-start-10">Reach the office closest to your opportunity, or email our team directly.</p>
           </AnimatedSection>
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+
+          <div className="mt-16 grid gap-5 lg:grid-cols-3">
             {offices.map((office, index) => (
               <AnimatedSection key={office.city} delay={index * 0.08}>
-                <article className="card-lift overflow-hidden rounded-[1.5rem] border border-ink/10 bg-white">
-                  <div className="relative aspect-[3/2]">
-                    <Image src={office.image} alt={`${office.city} real estate market`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" />
+                <article className="card-lift image-zoom overflow-hidden rounded-[1.75rem] border border-ink/10 bg-stone-50">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image src={office.image} alt={office.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" />
                   </div>
-                  <div className="p-7">
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-ink-faint">{office.region}</p>
-                    <h3 className="mt-3 font-display text-3xl text-ink">{office.city}</h3>
-                    {office.href ? (
-                      <a href={office.href} className="mt-5 inline-block text-sm font-semibold text-ink-muted hover:text-violet">{office.phone}</a>
-                    ) : (
-                      <a href="mailto:info@globalfundreg.com" className="mt-5 inline-block text-sm font-semibold text-ink-muted hover:text-violet">Contact by email</a>
-                    )}
+                  <div className="p-8">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-ink-faint">{office.region}</p>
+                      <span className="text-[10px] font-bold text-ink-faint">0{index + 1}</span>
+                    </div>
+                    <h3 className="mt-5 font-display text-5xl leading-none text-ink">{office.city}</h3>
+                    {office.href ? <a href={office.href} className="mt-6 inline-block text-sm font-semibold text-ink-muted hover:text-violet">{office.phone} →</a> : <a href="mailto:info@globalfundreg.com" className="mt-6 inline-block text-sm font-semibold text-ink-muted hover:text-violet">Contact by email →</a>}
                   </div>
                 </article>
               </AnimatedSection>
