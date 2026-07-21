@@ -1,66 +1,50 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-ink text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16">
-          <div className="md:col-span-4">
-            <div className="mb-5">
-              <Image src="/logo.png" alt="Global Fund Real Estate" width={180} height={44} className="h-10 w-auto brightness-0 invert" />
-            </div>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Premier commercial real estate brokerage delivering bold results
-              across America&apos;s most dynamic markets.
+      <div className="spectrum-line h-1 w-full" />
+      <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+        <div className="grid gap-14 border-b border-white/15 pb-14 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Image
+              src="/logo.png"
+              alt="Global Fund Real Estate Group"
+              width={800}
+              height={319}
+              className="h-auto w-[190px] brightness-0 invert"
+            />
+            <p className="mt-7 max-w-sm text-sm leading-7 text-white/55">
+              Commercial real estate acquisitions, sales, leasing, and asset management across three high-opportunity U.S. markets.
             </p>
           </div>
 
-          <div className="md:col-span-2">
-            <h4 className="text-white/30 text-xs font-medium uppercase tracking-wider mb-4">Navigate</h4>
-            <div className="space-y-2.5">
-              {[{ href: "/", label: "Home" }, { href: "/about", label: "About" }, { href: "/listings", label: "Listings" }, { href: "/contact", label: "Contact" }].map((l) => (
-                <Link key={l.href} href={l.href} className="block text-white/60 text-sm hover:text-electric transition-colors">{l.label}</Link>
-              ))}
+          <div className="md:col-span-2 md:col-start-7">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/35">Navigate</p>
+            <div className="mt-5 space-y-3 text-sm text-white/65">
+              <Link href="/" className="block hover:text-white">Home</Link>
+              <Link href="/about" className="block hover:text-white">About</Link>
+              <Link href="/listings" className="block hover:text-white">Listings</Link>
+              <Link href="/contact" className="block hover:text-white">Contact</Link>
             </div>
           </div>
 
-          <div className="md:col-span-3">
-            <h4 className="text-white/30 text-xs font-medium uppercase tracking-wider mb-4">Services</h4>
-            <div className="space-y-2.5 text-white/60 text-sm">
-              <p>Acquisitions</p>
-              <p>Sales &amp; Leasing</p>
-              <p>Asset Management</p>
-            </div>
-          </div>
-
-          <div className="md:col-span-3">
-            <h4 className="text-white/30 text-xs font-medium uppercase tracking-wider mb-4">Contact</h4>
-            <div className="space-y-2.5 text-sm">
-              <div>
-                <span className="text-white/30 text-xs">Phoenix</span>
-                <a href="tel:+14804627900" className="block text-white/60 hover:text-electric transition-colors">(480) 462-7900</a>
-              </div>
-              <div>
-                <span className="text-white/30 text-xs">Fort Lauderdale</span>
-                <a href="tel:+19547278066" className="block text-white/60 hover:text-electric transition-colors">(954) 727-8066</a>
-              </div>
-              <a href="mailto:info@globalfundreg.com" className="block text-white/60 hover:text-electric transition-colors mt-1">
-                info@globalfundreg.com
-              </a>
+          <div className="md:col-span-4 md:col-start-9">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/35">Start a conversation</p>
+            <a href="mailto:info@globalfundreg.com" className="mt-5 block font-display text-2xl text-white hover:text-gold sm:text-3xl">
+              info@globalfundreg.com
+            </a>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/60">
+              <a href="tel:+14804627900" className="hover:text-white">Phoenix · (480) 462-7900</a>
+              <a href="tel:+19547278066" className="hover:text-white">Fort Lauderdale · (954) 727-8066</a>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-white/25 text-xs">&copy; {new Date().getFullYear()} Global Fund Real Estate Group</p>
-          <div className="flex items-center gap-4 text-white/25 text-xs">
-            <span>Phoenix, AZ</span>
-            <span className="w-1 h-1 rounded-full bg-electric/40" />
-            <span>Fort Lauderdale, FL</span>
-            <span className="w-1 h-1 rounded-full bg-electric/40" />
-            <span>Chicago MSA, IL</span>
-          </div>
+        <div className="flex flex-col gap-3 pt-7 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Global Fund Real Estate Group</p>
+          <p>Phoenix · Fort Lauderdale · Chicago MSA</p>
         </div>
       </div>
     </footer>

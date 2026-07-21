@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export default function AnimatedSection({
   children,
@@ -15,6 +15,14 @@ export default function AnimatedSection({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +32,8 @@ export default function AnimatedSection({
       },
       { threshold: 0.12 }
     );
-    if (ref.current) observer.observe(ref.current);
+
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
@@ -34,8 +43,8 @@ export default function AnimatedSection({
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(32px)",
-        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
       }}
     >
       {children}

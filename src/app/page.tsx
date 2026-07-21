@@ -1,191 +1,154 @@
-"use client";
-
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const services = [
   {
+    number: "01",
     title: "Acquisitions",
-    desc: "We leverage deep networks and market intelligence to identify and close high-value property deals that maximize returns.",
-    color: "bg-amber",
-    iconColor: "text-amber",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5z" />
-      </svg>
-    ),
+    description:
+      "Market intelligence, disciplined underwriting, and a broad relationship network focused on opportunities with durable value.",
+    image: "/images/acquisitions-retail.webp",
+    alt: "Aerial view of a retail property",
   },
   {
+    number: "02",
     title: "Sales & Leasing",
-    desc: "Tailored strategies that attract premium tenants and buyers, driving exceptional value for every property in our portfolio.",
-    color: "bg-coral",
-    iconColor: "text-coral",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-      </svg>
-    ),
+    description:
+      "Positioning, outreach, and transaction strategy designed to connect each asset with the right buyer or tenant.",
+    image: "/images/leasing-office.webp",
+    alt: "Contemporary commercial office interior",
   },
   {
+    number: "03",
     title: "Asset Management",
-    desc: "Strategic oversight that enhances property value, optimizes operations, and delivers sustainable long-term growth.",
-    color: "bg-emerald",
-    iconColor: "text-emerald",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-      </svg>
-    ),
+    description:
+      "Hands-on oversight that aligns operations, occupancy, and capital decisions with the long-term objectives of ownership.",
+    image: "/images/asset-management.webp",
+    alt: "Commercial shopping center exterior",
   },
 ];
 
 const markets = [
-  { city: "Phoenix", state: "AZ", tag: "Southwest", desc: "One of America's fastest-growing metropolitan markets.", image: "/images/retail-1.jpg" },
-  { city: "Fort Lauderdale", state: "FL", tag: "Southeast", desc: "South Florida's thriving commercial corridor.", image: "/images/gallery-8.jpg" },
-  { city: "Chicago MSA", state: "IL", tag: "Midwest", desc: "The nation's most robust Midwestern hub.", image: "/images/gallery-6.jpg" },
+  { city: "Phoenix", region: "Arizona", detail: "Southwest growth market" },
+  { city: "Fort Lauderdale", region: "South Florida", detail: "Atlantic commercial corridor" },
+  { city: "Chicago MSA", region: "Illinois", detail: "Midwest business hub" },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* ══ HERO ══ */}
-      <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
-        {/* Bold background blobs */}
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-electric/[0.07] rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-coral/[0.05] rounded-full blur-[120px]" />
-        <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-violet/[0.04] rounded-full blur-[80px]" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-32 lg:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-7">
-              <div className="stagger-1">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-sm font-medium">
-                  <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
-                  3 Markets &middot; 5+ Sectors &middot; Limitless Potential
-                </span>
-              </div>
-
-              <h1 className="mt-8 font-display text-hero font-extrabold text-ink stagger-2">
-                Where Vision<br />
-                <span className="text-electric">Meets Value.</span>
+      <section className="relative overflow-hidden border-b border-ink/10 bg-stone-50 pt-28 lg:pt-32">
+        <div className="mx-auto grid min-h-[760px] max-w-[1440px] lg:grid-cols-12">
+          <div className="flex flex-col justify-between px-5 py-14 sm:px-8 lg:col-span-7 lg:px-12 lg:py-20 xl:py-24">
+            <div>
+              <p className="eyebrow reveal-1">Global Fund Real Estate Group</p>
+              <h1 className="mt-9 max-w-5xl font-display text-hero text-ink reveal-2">
+                Real estate,
+                <span className="block italic text-ink-muted">made valuable.</span>
               </h1>
-
-              <p className="mt-6 text-ink-muted text-lg sm:text-xl leading-relaxed max-w-lg font-body stagger-3">
-                Global Fund Real Estate Group delivers premier acquisitions,
-                management, and leasing across America&apos;s most
-                dynamic markets.
+              <p className="mt-8 max-w-xl text-base leading-8 text-ink-muted sm:text-lg reveal-3">
+                Commercial real estate acquisitions, sales, leasing, and asset management across Phoenix, South Florida, and the Chicago MSA.
               </p>
-
-              <div className="mt-10 flex flex-col sm:flex-row gap-3 stagger-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-electric text-white text-sm font-semibold rounded-full hover:bg-electric-dark hover:shadow-lg hover:shadow-electric/25 transition-all duration-300"
-                >
-                  Start a Conversation
-                  <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row reveal-4">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-3 rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
+                  Start a conversation <span aria-hidden="true">→</span>
                 </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-100 text-ink text-sm font-semibold rounded-full hover:bg-gray-200 transition-all duration-200"
-                >
-                  Our Story
+                <Link href="/listings" className="inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3.5 text-sm font-bold text-ink transition-colors hover:bg-white">
+                  Explore listings
                 </Link>
-              </div>
-
-              <div className="mt-14 flex items-center gap-5 stagger-5">
-                {["Phoenix, AZ", "Fort Lauderdale, FL", "Chicago, IL"].map((loc, i) => (
-                  <span key={loc} className="flex items-center gap-3">
-                    {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-300" />}
-                    <span className="text-ink-faint text-xs font-medium tracking-wide">{loc}</span>
-                  </span>
-                ))}
               </div>
             </div>
 
-            <div className="lg:col-span-5 stagger-3">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-tr from-electric/20 via-amber/10 to-violet/15 rounded-[2rem] blur-2xl opacity-70" />
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-black/10 border border-gray-100">
-                  <Image
-                    src="/images/gallery-3.jpg"
-                    alt="Premier waterfront commercial real estate"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent">
-                    <p className="text-white/90 text-xs font-medium tracking-wider uppercase">Featured Markets</p>
-                    <p className="text-white font-display text-xl font-bold mt-1">Coast to Coast</p>
-                  </div>
+            <div className="mt-16 grid max-w-2xl grid-cols-3 gap-4 border-t border-ink/15 pt-7 lg:mt-20">
+              {markets.map((market) => (
+                <div key={market.city}>
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink">{market.city}</p>
+                  <p className="mt-1 text-[11px] leading-4 text-ink-faint">{market.region}</p>
                 </div>
-                <div className="hidden lg:flex absolute -bottom-6 -left-6 bg-white rounded-2xl px-5 py-4 shadow-xl border border-gray-100 items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-electric/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-electric" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                  </div>
-                  <div>
-                    <p className="text-ink-faint text-xs font-medium">Trusted Since</p>
-                    <p className="text-ink font-display font-bold">Decade+</p>
-                  </div>
-                </div>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative min-h-[520px] overflow-hidden bg-ink lg:col-span-5 lg:min-h-full">
+            <Image
+              src="/images/phoenix-downtown.webp"
+              alt="Downtown Phoenix commercial and multifamily district"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/5 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-7 text-white sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/60">Three markets · One standard</p>
+              <p className="mt-3 max-w-sm font-display text-3xl leading-tight sm:text-4xl">Local execution with a broader point of view.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ SERVICES ══ */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <div className="max-w-xl mb-14">
-              <span className="text-electric text-sm font-semibold">What We Do</span>
-              <h2 className="mt-2 font-display text-section font-extrabold text-ink">
-                Full-spectrum<br />real estate solutions.
-              </h2>
+      <section className="bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid gap-10 border-b border-ink/15 pb-16 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">How we work</p>
+              <h2 className="mt-7 font-display text-section text-ink">Clear thinking for consequential decisions.</h2>
+            </div>
+            <div className="flex items-end lg:col-span-5 lg:col-start-8">
+              <p className="max-w-xl text-lg leading-8 text-ink-muted">
+                Every assignment begins with the asset, the market, and the client’s objective. From there, we build a focused strategy and stay close to the details through execution.
+              </p>
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {services.map((s, i) => (
-              <AnimatedSection key={s.title} delay={i * 0.1}>
-                <div className="group relative bg-white rounded-2xl p-8 lg:p-10 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-black/[0.03] transition-all duration-400 h-full overflow-hidden">
-                  {/* Color accent top bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 ${s.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-
-                  <div className={`w-12 h-12 rounded-xl ${s.color}/10 flex items-center justify-center mb-6 ${s.iconColor}`}>
-                    {s.icon}
+          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <AnimatedSection key={service.title} delay={index * 0.08}>
+                <article className="card-lift group h-full overflow-hidden rounded-[1.75rem] border border-ink/10 bg-stone-50">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
                   </div>
-
-                  <h3 className="font-display text-xl font-bold text-ink mb-3">{s.title}</h3>
-                  <p className="text-ink-muted text-[15px] leading-relaxed">{s.desc}</p>
-                </div>
+                  <div className="p-7 sm:p-9">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold tracking-[0.16em] text-ink-faint">{service.number}</span>
+                      <span className="spectrum-line h-1 w-14 rounded-full" />
+                    </div>
+                    <h3 className="mt-8 font-display text-4xl text-ink">{service.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-ink-muted">{service.description}</p>
+                  </div>
+                </article>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ STATS ══ */}
-      <section className="py-20 bg-ink relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-electric/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-violet/10 rounded-full blur-[100px]" />
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-              {[
-                { val: "3", label: "Major Markets", color: "text-amber-light" },
-                { val: "5+", label: "Property Sectors", color: "text-electric-glow" },
-                { val: "100%", label: "Client Focused", color: "text-emerald-light" },
-                { val: "24/7", label: "Dedicated Support", color: "text-violet-light" },
-              ].map((s, i) => (
-                <div key={i} className="text-center">
-                  <span className={`block font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold ${s.color}`}>
-                    {s.val}
-                  </span>
-                  <span className="block mt-2 text-white/40 text-sm font-medium">{s.label}</span>
+      <section className="grain overflow-hidden bg-ink py-24 text-white lg:py-32">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid gap-14 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="eyebrow !text-white/50">Where we work</p>
+              <h2 className="mt-7 font-display text-section text-white">Opportunity is local.</h2>
+              <p className="mt-7 max-w-md text-base leading-8 text-white/55">
+                Our regional presence brings market context and responsive execution to each engagement.
+              </p>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              {markets.map((market, index) => (
+                <div key={market.city} className="grid grid-cols-[2.5rem_1fr] gap-4 border-t border-white/20 py-7 first:border-t-0 first:pt-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center">
+                  <span className="text-xs font-bold text-white/35">0{index + 1}</span>
+                  <div>
+                    <p className="font-display text-3xl sm:text-4xl">{market.city}</p>
+                    <p className="mt-1 text-sm text-white/45">{market.region}</p>
+                  </div>
+                  <p className="col-start-2 text-xs uppercase tracking-[0.12em] text-white/45 sm:col-start-auto">{market.detail}</p>
                 </div>
               ))}
             </div>
@@ -193,81 +156,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ MARKETS ══ */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <div className="max-w-xl mb-14">
-              <span className="text-electric text-sm font-semibold">Our Markets</span>
-              <h2 className="mt-2 font-display text-section font-extrabold text-ink">
-                Three cities.<br />Infinite opportunity.
-              </h2>
+      <section className="bg-stone-100 py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:col-span-6">
+              <Image
+                src="/images/gallery-6.jpg"
+                alt="Modern office property"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="lg:col-span-5 lg:col-start-8">
+              <p className="eyebrow">Client perspective</p>
+              <blockquote className="mt-8 font-display text-4xl leading-[1.08] text-ink sm:text-5xl">
+                “Global Fund helped us secure a prime location for our new corporate office and manufacturing facility.”
+              </blockquote>
+              <p className="mt-7 text-sm font-bold text-ink">Doron Zacharin</p>
+              <p className="mt-1 text-sm text-ink-faint">PressTech · Miami, Florida</p>
             </div>
           </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {markets.map((m, i) => (
-              <AnimatedSection key={m.city} delay={i * 0.1}>
-                <div className="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-electric/20 hover:shadow-xl hover:shadow-electric/[0.06] transition-all duration-400 h-full overflow-hidden">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={m.image}
-                      alt={`${m.city} commercial real estate`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
-                    <span className="absolute top-4 left-4 inline-block px-3 py-1 rounded-full bg-white/95 backdrop-blur text-electric text-xs font-semibold">
-                      {m.tag}
-                    </span>
-                  </div>
-                  <div className="p-7 lg:p-8">
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink">{m.city}</h3>
-                    <span className="text-ink-faint text-sm">{m.state}</span>
-                    <p className="mt-3 text-ink-muted text-sm leading-relaxed">{m.desc}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ══ CTA ══ */}
-      <section className="py-24 lg:py-32 bg-gray-50 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-electric/[0.04] rounded-full blur-[80px]" />
-
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-          <AnimatedSection>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-sm font-medium mb-6">
-              Ready to grow?
-            </span>
-            <h2 className="font-display text-section font-extrabold text-ink">
-              Elevate your<br />
-              <span className="text-electric">portfolio today.</span>
-            </h2>
-            <p className="mt-5 text-ink-muted text-lg max-w-md mx-auto leading-relaxed">
-              Let&apos;s discuss how Global Fund can unlock the full potential
-              of your commercial real estate investments.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-electric text-white text-sm font-semibold rounded-full hover:bg-electric-dark hover:shadow-lg hover:shadow-electric/25 transition-all duration-300"
-              >
-                Let&apos;s Talk
-                <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-              </Link>
-              <a
-                href="tel:+14804627900"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gray-100 text-ink text-sm font-semibold rounded-full hover:bg-gray-200 transition-all duration-200"
-              >
-                Call Us
-              </a>
-            </div>
-          </AnimatedSection>
-        </div>
+      <section className="bg-white py-24 lg:py-32">
+        <AnimatedSection className="mx-auto max-w-5xl px-5 text-center sm:px-8">
+          <p className="eyebrow">What comes next</p>
+          <h2 className="mt-8 text-balance font-display text-section text-ink">Let’s find the value in your next move.</h2>
+          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-ink-muted">
+            Tell us about the asset, requirement, or opportunity you are evaluating.
+          </p>
+          <Link href="/contact" className="mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
+            Talk with our team <span aria-hidden="true">→</span>
+          </Link>
+        </AnimatedSection>
       </section>
     </>
   );

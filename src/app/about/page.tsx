@@ -1,150 +1,106 @@
-"use client";
-
-import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Meet the commercial real estate perspective and principles behind Global Fund Real Estate Group.",
+};
 
 const values = [
   {
+    number: "01",
     title: "Integrity",
-    desc: "The highest standards of honesty, transparency, and ethical conduct in every transaction.",
-    color: "bg-amber",
+    text: "Honest counsel, transparent communication, and ethical conduct at every stage of an engagement.",
   },
   {
+    number: "02",
     title: "Expertise",
-    desc: "Deep market knowledge and industry acumen driving strategic, informed decisions.",
-    color: "bg-electric",
+    text: "Market knowledge translated into clear strategy, informed decisions, and practical execution.",
   },
   {
+    number: "03",
     title: "Partnership",
-    desc: "Enduring relationships grounded in trust, collaboration, and shared success.",
-    color: "bg-emerald",
+    text: "Long-term relationships grounded in responsiveness, collaboration, and aligned interests.",
   },
 ];
 
 const sectors = [
   { name: "Retail", image: "/images/gallery-1.jpg" },
-  { name: "Restaurant", image: "/images/gallery-5.jpg" },
+  { name: "Office", image: "/images/gallery-6.jpg" },
   { name: "Industrial", image: "/images/industrial-1.jpg" },
-  { name: "Office", image: "/images/office-1.jpg" },
-  { name: "Multi-Family", image: "/images/mf-1.jpg" },
+  { name: "Multifamily", image: "/images/mf-1.jpg" },
   { name: "Hospitality", image: "/images/hospitality-1.jpg" },
+  { name: "Restaurant", image: "/images/gallery-8.jpg" },
 ];
 
 export default function About() {
   return (
     <>
-      {/* ══ HERO ══ */}
-      <section className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-white overflow-hidden">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-electric/[0.05] rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-coral/[0.04] rounded-full blur-[80px]" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-sm font-medium stagger-1">
-              About Us
-            </span>
-
-            <h1 className="mt-8 font-display text-hero font-extrabold text-ink stagger-2">
-              Built on<br />
-              <span className="text-electric">conviction.</span>
+      <section className="overflow-hidden bg-ink pt-28 text-white lg:pt-32">
+        <div className="mx-auto grid max-w-[1440px] lg:grid-cols-12">
+          <div className="flex min-h-[600px] flex-col justify-center px-5 py-20 sm:px-8 lg:col-span-7 lg:px-12">
+            <p className="eyebrow !text-white/50 reveal-1">About Global Fund</p>
+            <h1 className="mt-9 max-w-4xl font-display text-hero text-white reveal-2">
+              Experience with
+              <span className="block italic text-white/55">a point of view.</span>
             </h1>
-
-            <p className="mt-6 text-ink-muted text-lg sm:text-xl leading-relaxed max-w-lg stagger-3">
-              A premier brokerage with a singular vision: extraordinary results
-              in commercial real estate through expertise, integrity, and
-              relentless client focus.
+            <p className="mt-9 max-w-xl text-base leading-8 text-white/60 sm:text-lg reveal-3">
+              A commercial real estate group built to bring focused strategy, market fluency, and hands-on execution to every assignment.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ══ STORY ══ */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection>
-              <span className="text-electric text-sm font-semibold">Our Story</span>
-              <h2 className="mt-2 font-display text-section font-extrabold text-ink">
-                Vision into<br /><span className="text-electric">value.</span>
-              </h2>
-              <div className="mt-6 space-y-5 text-ink-muted text-lg leading-relaxed">
-                <p>
-                  Global Fund Real Estate Group was founded to bring
-                  institutional-caliber expertise to every client, across every
-                  market we serve.
-                </p>
-                <p>
-                  We&apos;ve served a diverse clientele spanning retail,
-                  restaurant, industrial, office, and medical spaces &mdash;
-                  building a track record of excellence.
-                </p>
-                <p>
-                  Our team leverages deep expertise in shopping centers, office
-                  buildings, and multi-family developments to maximize capital
-                  returns and consistently exceed expectations.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.15}>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-tr from-electric/15 via-amber/10 to-violet/10 rounded-[2rem] blur-2xl opacity-60" />
-                <div className="relative grid grid-cols-2 gap-3">
-                  <div className="space-y-3">
-                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg shadow-black/10">
-                      <Image src="/images/office-1.jpg" alt="Modern office property" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
-                    </div>
-                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg shadow-black/10">
-                      <Image src="/images/gallery-1.jpg" alt="Retail center" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
-                    </div>
-                  </div>
-                  <div className="space-y-3 pt-8">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg shadow-black/10">
-                      <Image src="/images/industrial-1.jpg" alt="Industrial building" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
-                    </div>
-                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg shadow-black/10">
-                      <Image src="/images/mf-1.jpg" alt="Multi-family property" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
+          <div className="relative min-h-[520px] lg:col-span-5 lg:min-h-full">
+            <Image
+              src="/images/gallery-3.jpg"
+              alt="South Florida real estate market"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/45 to-transparent" />
           </div>
         </div>
       </section>
 
-      {/* ══ SECTORS ══ */}
-      <section className="py-24 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <div className="max-w-xl mb-12">
-              <span className="text-electric text-sm font-semibold">Expertise</span>
-              <h2 className="mt-2 font-display text-section font-extrabold text-ink">
-                Diverse sectors.
-              </h2>
-              <p className="mt-4 text-ink-muted text-lg leading-relaxed">
-                From storefronts to skyline towers, we navigate every corner of the
-                commercial real estate landscape.
+      <section className="bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="grid gap-12 lg:grid-cols-12 lg:gap-20">
+            <div className="lg:col-span-4">
+              <p className="eyebrow">Our story</p>
+              <h2 className="mt-7 font-display text-section text-ink">Built around the assignment.</h2>
+            </div>
+            <div className="space-y-7 text-lg leading-9 text-ink-muted lg:col-span-6 lg:col-start-7">
+              <p>
+                Global Fund Real Estate Group began with a clear idea: clients deserve thoughtful strategy and committed execution whether the assignment is an acquisition, a lease, a sale, or the ongoing management of an asset.
+              </p>
+              <p>
+                Our work spans shopping centers, office buildings, industrial properties, multifamily developments, restaurant spaces, hospitality assets, and medical real estate.
+              </p>
+              <p>
+                With offices serving Phoenix, Fort Lauderdale, and the Chicago metropolitan area, we combine regional context with a broad relationship network to move opportunities forward.
               </p>
             </div>
           </AnimatedSection>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
-            {sectors.map((s, i) => (
-              <AnimatedSection key={s.name} delay={i * 0.06}>
-                <div className="group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-default">
-                  <Image
-                    src={s.image}
-                    alt={`${s.name} sector`}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
-                    <span className="inline-block w-8 h-0.5 bg-electric mb-2 transition-all duration-300 group-hover:w-12" />
-                    <h3 className="font-display text-white text-xl lg:text-2xl font-bold">{s.name}</h3>
+      <section className="bg-stone-100 py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection>
+            <p className="eyebrow">Our principles</p>
+            <h2 className="mt-7 max-w-3xl font-display text-section text-ink">The way we work matters.</h2>
+          </AnimatedSection>
+          <div className="mt-16 grid gap-px overflow-hidden rounded-[1.75rem] bg-ink/10 md:grid-cols-3">
+            {values.map((value, index) => (
+              <AnimatedSection key={value.title} delay={index * 0.08} className="bg-white p-8 sm:p-10 lg:min-h-[350px] lg:p-12">
+                <div className="flex h-full flex-col">
+                  <span className="text-xs font-bold tracking-[0.16em] text-ink-faint">{value.number}</span>
+                  <div className="mt-auto pt-20">
+                    <h3 className="font-display text-4xl text-ink">{value.title}</h3>
+                    <p className="mt-5 text-sm leading-7 text-ink-muted">{value.text}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -153,24 +109,31 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══ VALUES ══ */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <AnimatedSection>
-            <span className="text-electric text-sm font-semibold">What Drives Us</span>
-            <h2 className="mt-2 font-display text-section font-extrabold text-ink mb-14">
-              Core values.
-            </h2>
+      <section className="bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <AnimatedSection className="flex flex-col gap-7 border-b border-ink/15 pb-14 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="eyebrow">Property sectors</p>
+              <h2 className="mt-7 max-w-3xl font-display text-section text-ink">Fluent across asset classes.</h2>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-ink-muted">
+              Different property types demand different operating, tenant, and capital perspectives. Our experience spans the commercial landscape.
+            </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {values.map((v, i) => (
-              <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="group bg-white rounded-2xl p-8 lg:p-10 border border-gray-100 hover:shadow-lg transition-all duration-300 h-full relative overflow-hidden">
-                  <div className={`absolute top-0 left-0 right-0 h-1 ${v.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-                  <div className={`w-3 h-3 rounded-full ${v.color} mb-6`} />
-                  <h3 className="font-display text-xl font-bold text-ink mb-3">{v.title}</h3>
-                  <p className="text-ink-muted text-[15px] leading-relaxed">{v.desc}</p>
+          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-5">
+            {sectors.map((sector, index) => (
+              <AnimatedSection key={sector.name} delay={(index % 3) * 0.06}>
+                <div className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink">
+                  <Image
+                    src={sector.image}
+                    alt={`${sector.name} commercial real estate`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.04] group-hover:opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+                  <p className="absolute bottom-0 left-0 p-5 font-display text-2xl text-white sm:p-7 sm:text-3xl">{sector.name}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -178,26 +141,14 @@ export default function About() {
         </div>
       </section>
 
-      {/* ══ CTA ══ */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <AnimatedSection>
-            <h2 className="font-display text-section font-extrabold text-ink">
-              Let&apos;s build<br /><span className="text-electric">together.</span>
-            </h2>
-            <p className="mt-5 text-ink-muted text-lg max-w-md mx-auto">
-              Whether you&apos;re acquiring, leasing, or optimizing &mdash;
-              we&apos;re ready.
-            </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 mt-8 px-8 py-4 bg-electric text-white text-sm font-semibold rounded-full hover:bg-electric-dark hover:shadow-lg hover:shadow-electric/25 transition-all duration-300"
-            >
-              Get in Touch
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            </Link>
-          </AnimatedSection>
-        </div>
+      <section className="bg-stone-100 py-24 lg:py-28">
+        <AnimatedSection className="mx-auto max-w-5xl px-5 text-center sm:px-8">
+          <p className="eyebrow">Work with us</p>
+          <h2 className="mt-8 text-balance font-display text-section text-ink">Bring us the opportunity. We’ll bring the focus.</h2>
+          <Link href="/contact" className="mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-ink-soft">
+            Start a conversation <span aria-hidden="true">→</span>
+          </Link>
+        </AnimatedSection>
       </section>
     </>
   );
