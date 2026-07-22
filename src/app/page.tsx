@@ -15,24 +15,24 @@ const services = [
     title: "Acquisitions",
     kicker: "Find the signal",
     description: "Market intelligence, disciplined underwriting, and a broad relationship network focused on opportunities with durable value.",
-    image: "/images/acquisitions-retail.webp",
-    alt: "Aerial view of a commercial retail property",
+    image: "/images/service-acquisitions-v2.webp",
+    alt: "Aerial view of a Phoenix-area commercial retail center",
   },
   {
     number: "02",
     title: "Sales & Leasing",
     kicker: "Create the match",
     description: "Positioning, outreach, and transaction strategy designed to connect each asset with the right buyer or tenant.",
-    image: "/images/leasing-office.webp",
-    alt: "Contemporary commercial office interior",
+    image: "/images/service-sales-leasing-v2.webp",
+    alt: "Modern commercial office and light-industrial property entrance",
   },
   {
     number: "03",
     title: "Asset Management",
     kicker: "Protect the upside",
     description: "Hands-on oversight aligning operations, occupancy, and capital decisions with the long-term objectives of ownership.",
-    image: "/images/asset-management.webp",
-    alt: "Commercial shopping center exterior",
+    image: "/images/service-asset-management-v2.webp",
+    alt: "Well-maintained mixed-use commercial property at golden hour",
   },
 ];
 
@@ -171,7 +171,7 @@ export default function Home() {
           <AnimatedSection className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
             <div className="relative lg:col-span-6">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-soft">
-                <Image src="/images/gallery-5.jpg" alt="Contemporary commercial hospitality space" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+                <Image src="/images/testimonial-presstech-v2.webp" alt="South Florida corporate office and manufacturing facility" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               </div>
               <div className="spectrum-line absolute -bottom-4 left-8 h-2 w-1/2 rounded-full" />
             </div>
