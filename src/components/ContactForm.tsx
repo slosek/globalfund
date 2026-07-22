@@ -4,18 +4,19 @@ import { useRef, useState, type FormEvent } from "react";
 import { trackEvent } from "@/components/Analytics";
 
 export default function ContactForm() {
-  const [opened, setOpened] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const mountedAt = useRef(Date.now());
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const honeypot = String(data.get("website") || "");
 
     // Real visitors need time to read and complete the form. Silently absorb
     // submissions that fill the hidden field or fire immediately after mount.
     if (honeypot || Date.now() - mountedAt.current < 750) {
-      setOpened(true);
+      setStatus("success");
       return;
     }
 
@@ -23,19 +24,35 @@ export default function ContactForm() {
     const email = String(data.get("email") || "");
     const company = String(data.get("company") || "");
     const message = String(data.get("message") || "");
-    const subject = encodeURIComponent(`Website inquiry from ${name}`);
-    const body = encodeURIComponent(
-      [`Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : "", "", message]
-        .filter(Boolean)
-        .join("\n")
-    );
 
-    trackEvent("generate_lead", {
-      method: "contact_form_email_draft",
-      form_name: "website_inquiry",
-    });
-    window.location.href = `mailto:info@globalfundreg.com?subject=${subject}&body=${body}`;
-    setOpened(true);
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          message,
+          website: honeypot,
+          startedAt: mountedAt.current,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Contact form submission failed.");
+
+      trackEvent("generate_lead", {
+        method: "website_contact_form",
+        form_name: "website_inquiry",
+      });
+      form.reset();
+      mountedAt.current = Date.now();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -65,16 +82,21 @@ export default function ContactForm() {
         <textarea name="message" required maxLength={3000} rows={5} className="field mt-2 resize-y" />
       </label>
       <div className="flex flex-col gap-5 pt-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="group inline-flex w-fit items-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-extrabold uppercase tracking-[0.13em] text-white transition-colors hover:bg-ink-soft">
-          Open email draft <span aria-hidden="true">↗</span>
+        <button disabled={status === "submitting"} type="submit" className="group inline-flex w-fit items-center gap-4 rounded-full bg-ink px-6 py-4 text-[10px] font-extrabold uppercase tracking-[0.13em] text-white transition-colors hover:bg-ink-soft disabled:cursor-wait disabled:opacity-60">
+          {status === "submitting" ? "Sending…" : "Send inquiry"} <span aria-hidden="true">→</span>
         </button>
         <p className="max-w-xs text-xs leading-5 text-ink-faint">
-          This opens your email app. No information is stored on this website.
+          Sent securely to our team and protected against automated submissions.
         </p>
       </div>
-      {opened && (
+      {status === "success" && (
         <p role="status" className="rounded-xl bg-moss/10 px-4 py-3 text-sm text-moss">
-          Your email draft should now be open. If it did not launch, email info@globalfundreg.com directly.
+          Thank you. Your inquiry has been sent, and our team will follow up directly.
+        </p>
+      )}
+      {status === "error" && (
+        <p role="alert" className="rounded-xl bg-coral/10 px-4 py-3 text-sm text-coral">
+          We could not send your inquiry. Please email <a className="underline" href="mailto:info@globalfundreg.com">info@globalfundreg.com</a> directly.
         </p>
       )}
     </form>
