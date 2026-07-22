@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 const EMBED_ORIGIN = "https://www.crebuilder.com";
-const EMBED_URL = `${EMBED_ORIGIN}/listings/98bca496-29b3-4838-aa20-086cb6fa61c0/embed?mode=grid`;
+const EMBED_URL = `${EMBED_ORIGIN}/listings/a391f398-0d28-485c-8ab5-422c6cb062e5/embed?mode=grid`;
 
 export default function ListingsEmbed() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -16,9 +16,6 @@ export default function ListingsEmbed() {
     const parsedPropertyId = propertyParam ? Number.parseInt(propertyParam, 10) : null;
     const propertyId = Number.isFinite(parsedPropertyId) ? parsedPropertyId : null;
 
-    let initAttempts = 0;
-    let initTimer: number | undefined;
-
     const postInit = () => {
       iframe.contentWindow?.postMessage(
         { type: "cre-init", propertyId },
@@ -26,23 +23,12 @@ export default function ListingsEmbed() {
       );
     };
 
-    const startInitHandshake = () => {
-      postInit();
-      if (initTimer) window.clearInterval(initTimer);
-      initTimer = window.setInterval(() => {
-        initAttempts += 1;
-        postInit();
-        if (initAttempts >= 40 && initTimer) window.clearInterval(initTimer);
-      }, 1500);
-    };
-
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== EMBED_ORIGIN || event.source !== iframe.contentWindow) return;
       if (!event.data || typeof event.data.type !== "string") return;
 
       if (event.data.type === "cre-listings-resize" && Number.isFinite(event.data.height)) {
-        if (initTimer) window.clearInterval(initTimer);
-        iframe.style.height = `${Math.min(Math.max(event.data.height, 700), 5000)}px`;
+        iframe.style.height = `${event.data.height}px`;
       }
 
       if (event.data.type === "cre-nav-property") {
@@ -65,12 +51,10 @@ export default function ListingsEmbed() {
       }
     };
 
-    iframe.addEventListener("load", startInitHandshake);
+    iframe.addEventListener("load", postInit);
     window.addEventListener("message", handleMessage);
-    startInitHandshake();
     return () => {
-      if (initTimer) window.clearInterval(initTimer);
-      iframe.removeEventListener("load", startInitHandshake);
+      iframe.removeEventListener("load", postInit);
       window.removeEventListener("message", handleMessage);
     };
   }, []);
@@ -79,11 +63,13 @@ export default function ListingsEmbed() {
     <iframe
       ref={iframeRef}
       src={EMBED_URL}
-      title="Global Fund commercial property listings"
+      title="Property Listings"
       width="100%"
-      height={1100}
+      height={900}
+      frameBorder={0}
       loading="eager"
-      className="min-h-[700px] w-full rounded-[1.75rem] border border-ink/10 bg-white shadow-soft"
+      className="w-full bg-white"
+      style={{ border: "none", borderRadius: "8px" }}
     />
   );
 }
