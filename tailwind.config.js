@@ -30,7 +30,7 @@ module.exports = {
         float: "0 18px 55px rgba(20, 20, 18, 0.09)",
       },
       fontSize: {
-        hero: ["clamp(4.5rem, 9.7vw, 9.6rem)", { lineHeight: "0.79", letterSpacing: "-0.06em" }],
+        hero: ["clamp(3.75rem, 9.7vw, 9.6rem)", { lineHeight: "0.79", letterSpacing: "-0.06em" }],
         section: ["clamp(2.9rem, 6.2vw, 5.8rem)", { lineHeight: "0.9", letterSpacing: "-0.04em" }],
         statement: ["clamp(3.35rem, 6.1vw, 6.75rem)", { lineHeight: "0.9", letterSpacing: "-0.045em" }],
       },

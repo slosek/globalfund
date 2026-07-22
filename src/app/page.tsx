@@ -59,7 +59,7 @@ export default function Home() {
             <p className="mt-9 max-w-lg text-[15px] leading-7 text-ink-muted sm:text-base sm:leading-8 reveal-3">
               Acquisitions, sales, leasing, and asset management shaped by clear strategy and carried through with committed execution.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row reveal-4">
+            <div className="mt-9 flex flex-col gap-5 sm:flex-row sm:gap-4 reveal-4">
               <Link href="/contact" className="group inline-flex items-center justify-center gap-4 rounded-full bg-ink px-6 py-4 text-[11px] font-extrabold uppercase tracking-[0.13em] text-white transition-colors hover:bg-ink-soft">
                 Start a conversation <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
               </Link>
@@ -69,7 +69,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid overflow-hidden rounded-2xl border border-white/20 bg-ink/75 text-white shadow-soft backdrop-blur-md sm:grid-cols-3 lg:ml-auto lg:w-[720px]">
+          <div className="mt-8 grid overflow-hidden rounded-2xl border border-white/20 bg-ink/75 text-white shadow-soft backdrop-blur-md sm:mt-10 sm:grid-cols-3 lg:ml-auto lg:mt-0 lg:w-[720px]">
             {markets.map((market, index) => (
               <div key={market.city} className="flex items-center gap-4 border-b border-white/15 px-5 py-4 last:border-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
                 <span className="text-[10px] font-extrabold text-white/35">0{index + 1}</span>

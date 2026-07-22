@@ -26,13 +26,25 @@ export default function Navigation() {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? "bg-stone-50/95 shadow-float backdrop-blur-xl" : "bg-stone-50/80 backdrop-blur-md"}`}>
-      <div className="spectrum-line h-[3px] w-full" />
-      <nav className="mx-auto flex h-[82px] max-w-[1500px] items-center justify-between px-5 sm:px-8 lg:px-12" aria-label="Primary navigation">
-        <Link href="/" className="relative z-10 block" aria-label="Global Fund Real Estate Group home">
-          <Image src="/logo.png" alt="Global Fund Real Estate Group" width={800} height={319} className="h-auto w-[158px] sm:w-[184px]" priority />
-        </Link>
+    <>
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled || open ? "bg-stone-50/95 shadow-float backdrop-blur-xl" : "bg-stone-50/80 backdrop-blur-md"}`}>
+        <div className="spectrum-line h-[3px] w-full" />
+        <nav className="mx-auto flex h-[82px] max-w-[1500px] items-center justify-between px-5 sm:px-8 lg:px-12" aria-label="Primary navigation">
+          <Link href="/" className="relative z-10 block" aria-label="Global Fund Real Estate Group home">
+            <Image src="/logo.png" alt="Global Fund Real Estate Group" width={800} height={319} className="h-auto w-[158px] sm:w-[184px]" priority />
+          </Link>
 
         <div className="hidden items-center gap-9 lg:flex">
           <div className="flex items-center gap-8">
@@ -53,25 +65,26 @@ export default function Navigation() {
           </Link>
         </div>
 
-        <button
-          type="button"
-          className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          <span className="sr-only">Menu</span>
-          <span className="relative block h-3.5 w-5">
-            <span className={`absolute left-0 top-0.5 h-px w-5 bg-ink transition-transform ${open ? "translate-y-[5px] rotate-45" : ""}`} />
-            <span className={`absolute bottom-0.5 left-0 h-px w-5 bg-ink transition-transform ${open ? "-translate-y-[5px] -rotate-45" : ""}`} />
-          </span>
-        </button>
-      </nav>
+          <button
+            type="button"
+            className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            <span className="sr-only">Menu</span>
+            <span className="relative block h-3.5 w-5">
+              <span className={`absolute left-0 top-0.5 h-px w-5 bg-ink transition-transform ${open ? "translate-y-[5px] rotate-45" : ""}`} />
+              <span className={`absolute bottom-0.5 left-0 h-px w-5 bg-ink transition-transform ${open ? "-translate-y-[5px] -rotate-45" : ""}`} />
+            </span>
+          </button>
+        </nav>
+      </header>
 
       <div
         id="mobile-menu"
-        className={`overflow-hidden bg-stone-50 transition-[max-height,visibility] duration-500 lg:hidden ${open ? "visible max-h-[500px]" : "invisible max-h-0"}`}
+        className={`fixed inset-x-0 bottom-0 top-[85px] z-40 bg-stone-50 transition-[opacity,visibility] duration-300 lg:hidden ${open ? "visible overflow-y-auto opacity-100" : "invisible overflow-hidden opacity-0"}`}
       >
         <div className="border-t border-ink/10 px-5 pb-8 pt-4 sm:px-8">
           {links.map((link, index) => (
@@ -83,6 +96,6 @@ export default function Navigation() {
           <a href="tel:+14804627900" className="mt-7 inline-flex rounded-full bg-ink px-5 py-3 text-xs font-bold text-white">Call Phoenix · (480) 462-7900</a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
