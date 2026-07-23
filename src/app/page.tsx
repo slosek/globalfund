@@ -15,7 +15,7 @@ const services = [
     title: "Acquisitions",
     kicker: "Find the signal",
     description: "Market intelligence, disciplined underwriting, and a broad relationship network focused on opportunities with durable value.",
-    image: "/images/service-acquisitions-v2.webp",
+    image: "/images/service-acquisitions-v3.webp",
     alt: "Aerial view of a Phoenix-area commercial retail center",
   },
   {
@@ -23,7 +23,7 @@ const services = [
     title: "Sales & Leasing",
     kicker: "Create the match",
     description: "Positioning, outreach, and transaction strategy designed to connect each asset with the right buyer or tenant.",
-    image: "/images/service-sales-leasing-v2.webp",
+    image: "/images/service-sales-leasing-v3.webp",
     alt: "Modern commercial office and light-industrial property entrance",
   },
   {
@@ -31,22 +31,22 @@ const services = [
     title: "Asset Management",
     kicker: "Protect the upside",
     description: "Hands-on oversight aligning operations, occupancy, and capital decisions with the long-term objectives of ownership.",
-    image: "/images/service-asset-management-v2.webp",
+    image: "/images/service-asset-management-v3.webp",
     alt: "Well-maintained mixed-use commercial property at golden hour",
   },
 ];
 
 const markets = [
-  { city: "Phoenix", region: "Arizona", note: "Southwest growth market", image: "/images/phoenix-downtown.webp", alt: "Downtown Phoenix commercial district" },
-  { city: "Fort Lauderdale", region: "South Florida", note: "Atlantic commercial corridor", image: "/images/gallery-3.jpg", alt: "Fort Lauderdale waterfront and skyline" },
-  { city: "Chicago MSA", region: "Illinois", note: "Midwest business hub", image: "/images/gallery-6.jpg", alt: "Modern commercial office property" },
+  { city: "Phoenix", region: "Arizona", note: "Southwest growth market", image: "/images/market-phoenix-v3.webp", alt: "Downtown Phoenix commercial district" },
+  { city: "Fort Lauderdale", region: "South Florida", note: "Atlantic commercial corridor", image: "/images/market-fort-lauderdale-v3.webp", alt: "Fort Lauderdale waterfront and skyline" },
+  { city: "Chicago MSA", region: "Illinois", note: "Midwest business hub", image: "/images/market-chicago-v3.webp", alt: "Modern Chicago commercial office district" },
 ];
 
 export default function Home() {
   return (
     <>
       <section className="relative min-h-[880px] overflow-hidden bg-stone-50 pt-[85px] lg:min-h-[930px]">
-        <Image src="/images/hero-v2.jpg" alt="Mixed-use commercial real estate district at golden hour" fill priority sizes="100vw" className="object-cover object-[66%_center]" />
+        <Image src="/images/hero-phoenix-v3.webp" alt="Mixed-use commercial real estate district in greater Phoenix at golden hour" fill priority quality={90} sizes="100vw" className="object-cover object-[66%_center]" />
         <div className="paper-fade absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-ink/55 to-transparent lg:h-56" />
 
@@ -116,7 +116,7 @@ export default function Home() {
             {services.map((service, index) => (
               <AnimatedSection key={service.title} delay={index * 0.05} className={`grid items-center gap-10 lg:grid-cols-12 lg:gap-16 ${index % 2 ? "" : ""}`}>
                 <div className={`image-zoom relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-stone-100 lg:col-span-7 ${index % 2 ? "lg:col-start-6" : ""}`}>
-                  <Image src={service.image} alt={service.alt} fill sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
+                  <Image src={service.image} alt={service.alt} fill quality={90} sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
                   <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/30 to-transparent" />
                   <span className="absolute bottom-6 left-6 rounded-full border border-white/25 bg-ink/55 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white backdrop-blur-md">{service.kicker}</span>
                 </div>
@@ -149,7 +149,7 @@ export default function Home() {
             {markets.map((market, index) => (
               <AnimatedSection key={market.city} delay={index * 0.08}>
                 <article className="image-zoom group relative min-h-[540px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-ink-soft">
-                  <Image src={market.image} alt={market.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover opacity-75" />
+                  <Image src={market.image} alt={market.alt} fill quality={90} sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover opacity-75" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
                     <div className="flex items-center justify-between border-b border-white/20 pb-5">

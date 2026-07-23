@@ -14,7 +14,7 @@ export default function Listings() {
   return (
     <>
       <section className="relative min-h-[650px] overflow-hidden bg-ink pt-[85px] text-white">
-        <Image src="/images/retail-1.jpg" alt="Commercial retail corridor" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/listings-retail-v3.webp" alt="Phoenix commercial retail corridor at golden hour" fill priority quality={90} sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 bg-ink/55" />
         <div className="ink-fade absolute inset-0" />
         <div className="relative z-10 mx-auto flex min-h-[565px] max-w-[1500px] flex-col justify-center px-5 py-20 sm:px-8 lg:px-12">

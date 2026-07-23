@@ -18,18 +18,18 @@ const values = [
 ];
 
 const sectors = [
-  { name: "Retail", image: "/images/retail-1.jpg", position: "lg:col-span-2 lg:row-span-2", alt: "Retail commercial real estate" },
-  { name: "Office", image: "/images/gallery-6.jpg", position: "", alt: "Office commercial real estate" },
+  { name: "Retail", image: "/images/service-acquisitions-v3.webp", position: "lg:col-span-2 lg:row-span-2", alt: "Retail commercial real estate" },
+  { name: "Office", image: "/images/market-chicago-v3.webp", position: "", alt: "Office commercial real estate" },
   { name: "Industrial", image: "/images/industrial-1.jpg", position: "", alt: "Industrial commercial real estate" },
   { name: "Multifamily", image: "/images/mf-1.jpg", position: "", alt: "Multifamily real estate" },
-  { name: "Hospitality & Restaurant", image: "/images/hospitality-1.jpg", position: "", alt: "Hospitality commercial real estate" },
+  { name: "Hospitality & Restaurant", image: "/images/sector-hospitality-v3.webp", position: "", alt: "Hospitality commercial real estate" },
 ];
 
 export default function About() {
   return (
     <>
       <section className="relative min-h-[760px] overflow-hidden bg-ink pt-[85px] text-white lg:min-h-[850px]">
-        <Image src="/images/gallery-3.jpg" alt="South Florida waterfront and commercial skyline" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/about-fort-lauderdale-v3.webp" alt="Fort Lauderdale waterfront and commercial skyline at golden hour" fill priority quality={90} sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 bg-ink/35" />
         <div className="ink-fade absolute inset-0" />
         <div className="relative z-10 mx-auto flex min-h-[675px] max-w-[1500px] flex-col justify-center px-5 py-20 sm:px-8 lg:min-h-[765px] lg:px-12">
@@ -99,7 +99,7 @@ export default function About() {
             {sectors.map((sector, index) => (
               <AnimatedSection key={sector.name} delay={(index % 4) * 0.06} className={sector.position}>
                 <article className="image-zoom group relative h-full min-h-[270px] overflow-hidden rounded-[1.5rem] bg-ink-soft">
-                  <Image src={sector.image} alt={sector.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-75" />
+                  <Image src={sector.image} alt={sector.alt} fill quality={90} sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-75" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
                     <p className="font-display text-3xl text-white sm:text-4xl">{sector.name}</p>

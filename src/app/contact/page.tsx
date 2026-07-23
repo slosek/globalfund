@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 };
 
 const offices = [
-  { city: "Phoenix", region: "Arizona", phone: "(480) 462-7900", href: "tel:+14804627900", image: "/images/retail-1.jpg", alt: "Phoenix commercial retail corridor" },
-  { city: "Fort Lauderdale", region: "South Florida", phone: "(954) 727-8066", href: "tel:+19547278066", image: "/images/gallery-3.jpg", alt: "Fort Lauderdale waterfront and skyline" },
-  { city: "Chicago MSA", region: "Illinois", phone: null, href: null, image: "/images/gallery-6.jpg", alt: "Chicago-area commercial office property" },
+  { city: "Phoenix", region: "Arizona", phone: "(480) 462-7900", href: "tel:+14804627900", image: "/images/market-phoenix-v3.webp", alt: "Phoenix commercial district" },
+  { city: "Fort Lauderdale", region: "South Florida", phone: "(954) 727-8066", href: "tel:+19547278066", image: "/images/market-fort-lauderdale-v3.webp", alt: "Fort Lauderdale waterfront and skyline" },
+  { city: "Chicago MSA", region: "Illinois", phone: null, href: null, image: "/images/market-chicago-v3.webp", alt: "Chicago-area commercial office property" },
 ];
 
 export default function Contact() {
   return (
     <>
       <section className="relative min-h-[680px] overflow-hidden bg-ink pt-[85px] text-white">
-        <Image src="/images/hero-v2.jpg" alt="Commercial real estate district at golden hour" fill priority sizes="100vw" className="object-cover object-center" />
+        <Image src="/images/hero-phoenix-v3.webp" alt="Commercial real estate district in greater Phoenix at golden hour" fill priority quality={90} sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 bg-ink/50" />
         <div className="ink-fade absolute inset-0" />
         <div className="relative z-10 mx-auto flex min-h-[595px] max-w-[1500px] flex-col justify-center px-5 py-20 sm:px-8 lg:px-12">
@@ -77,7 +77,7 @@ export default function Contact() {
               <AnimatedSection key={office.city} delay={index * 0.08}>
                 <article className="card-lift image-zoom overflow-hidden rounded-[1.75rem] border border-ink/10 bg-stone-50">
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image src={office.image} alt={office.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" />
+                    <Image src={office.image} alt={office.alt} fill quality={90} sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover" />
                   </div>
                   <div className="p-8">
                     <div className="flex items-center justify-between">
