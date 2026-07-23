@@ -45,6 +45,7 @@ Changing the room directory in Vercel requires a redeployment. SharePoint permis
 - Tenant ID: `7de72ffc-f810-42a1-9399-8b14ea41e329`
 - Pilot SharePoint site: `https://globalfundregcom.sharepoint.com/sites/GlobalFundClientRooms`
 - Pilot portal account: `sam@globalfundreg.com`
+- Operations owner: `felipe@globalfundreg.com` (`Felipe Desouza`)
 
 The pilot site is private. External sharing is limited to new and existing authenticated guests, the default link type is **Specific people**, and the default permission is **View**. Anonymous `Anyone` links are disabled for the site.
 
