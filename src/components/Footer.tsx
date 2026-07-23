@@ -32,6 +32,7 @@ export default function Footer() {
               <Link href="/about" className="block hover:text-white">About</Link>
               <Link href="/listings" className="block hover:text-white">Listings</Link>
               <Link href="/contact" className="block hover:text-white">Contact</Link>
+              <Link href="/portal" className="block hover:text-white">Client Portal</Link>
             </div>
           </div>
           <div className="md:col-span-4 md:col-start-9">

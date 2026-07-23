@@ -10,6 +10,7 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/listings", label: "Listings" },
   { href: "/contact", label: "Contact" },
+  { href: "/portal", label: "Client Portal" },
 ];
 
 export default function Navigation() {
@@ -47,7 +48,7 @@ export default function Navigation() {
           </Link>
 
         <div className="hidden items-center gap-9 lg:flex">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-7">
             {links.map((link) => (
               <Link
                 key={link.href}
