@@ -31,6 +31,15 @@ export default function ListingsEmbed() {
         iframe.style.height = `${event.data.height}px`;
       }
 
+      if (event.data.type === "cre-scroll-to" && Number.isFinite(event.data.top)) {
+        const iframeTop = iframe.getBoundingClientRect().top + window.scrollY;
+        const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+        window.scrollTo({
+          top: Math.max(0, iframeTop + event.data.top - headerHeight - 12),
+          behavior: "smooth",
+        });
+      }
+
       if (event.data.type === "cre-nav-property") {
         const url = new URL(window.location.href);
         if (event.data.propertyId) url.searchParams.set("property", String(event.data.propertyId));
